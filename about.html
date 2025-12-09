@@ -3,23 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About - Common Logic LLC</title>
-  <link rel="stylesheet" href="style.css">
+  <title>About - CommonLogix LLC</title>
+  <style>
+    * {margin:0;padding:0;box-sizing:border-box;}
+    body {font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;background:#ffffff;color:#1a1a1a;line-height:1.6;}
+    header {background:#f8f9fa;border-bottom:1px solid #e9ecef;padding:24px 20px;position:sticky;top:0;z-index:100;}
+    .header-content {max-width:1000px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
+    .logo {font-size:1.8em;font-weight:700;color:#2c5aa0;text-decoration:none;}
+    nav a {margin-left:32px;color:#1a1a1a;text-decoration:none;font-size:0.95em;transition:color .2s;}
+    nav a:hover {color:#2c5aa0;}
+    main {max-width:1000px;margin:80px auto 120px;padding:0 20px;text-align:center;}
+    h1 {font-size:3em;margin-bottom:24px;color:#1a1a1a;}
+    p {font-size:1.1em;color:#444;max-width:700px;margin:0 auto 24px;line-height:1.8;}
+    footer {background:#f8f9fa;border-top:1px solid #e9ecef;padding:48px 20px;}
+    .footer-content {max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:32px;margin-bottom:0 auto 32px;}
+    .footer-section h4 {font-size:1.05em;margin-bottom:16px;color:#1a1a1a;font-weight:600;}
+    .footer-section p, .footer-section a {color:#666;font-size:.95em;line-height:1.8;}
+    .footer-section a:hover {text-decoration:underline;color:#2c5aa0;}
+    .footer-bottom {max-width:1000px;margin:0 auto;padding-top:32px;border-top:1px solid #e9ecef;text-align:center;color:#999;font-size:.9em;}
+  </style>
 </head>
 <body>
-  <header>...</header> <!-- same header as index -->
-  <main style="max-width:800px;margin:80px auto;padding:20px;text-align:center;">
-    <h1>About Common Logic LLC</h1>
-    <p style="font-size:1.3em;color:#444;margin:30px 0;line-height:1.8;">
-      We build quiet, beautiful iOS apps that help people live with more intention — 
-      in faith, family, and adventure.
-    </p>
-    <p style="color:#666;">
-      One developer. One mission. No ads. No tracking. Just tools that matter.
-    </p>
-    <p style="margin-top:50px;">
-      <a href="/" style="color:#2c5aa0;">← Back to home</a>
-    </p>
+  <header>
+    <div class="header-content">
+      <a href="/" class="logo">CommonLogix</a>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1>About CommonLogix</h1>
+    <p>We are a small, focused iOS studio dedicated to building quiet, beautiful tools for faith, family, and adventure.</p>
+    <p>Every app is crafted with intention — no ads, no tracking, no noise. Just meaningful experiences that help people live better.</p>
+    <p>One developer. One mission. Real apps for real life.</p>
   </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Company</h4>
+        <p>CommonLogix LLC<br>iOS App Development<br><a href="mailto:info@commonlogix.com">info@commonlogix.com</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Legal</h4>
+        <p><a href="/privacy.html">Privacy Policy & Terms</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 CommonLogix LLC. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
