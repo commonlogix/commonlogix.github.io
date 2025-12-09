@@ -7,210 +7,43 @@
   <meta name="author" content="CommonLogix LLC">
   <title>CommonLogix LLC - iOS App Development</title>
   <style>
-    * {margin:0;padding:0;box-sizing:border-box;}
-    
-    body {
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;
-      background:#ffffff;
-      color:#1a1a1a;
-      line-height:1.6;
-    }
-    
-    header {
-      background:#f8f9fa;
-      border-bottom:1px solid #e9ecef;
-      padding:24px 20px;
-      position:sticky;
-      top:0;
-      z-index:100;
-    }
-    
-    .header-content {
-      max-width:1000px;
-      margin:0 auto;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-    
-    .logo {
-      font-size:1.8em;
-      font-weight:700;
-      color:#2c5aa0;
-      text-decoration:none;
-    }
-    
-    nav a {
-      margin-left:32px;
-      color:#1a1a1a;
-      text-decoration:none;
-      font-size:0.95em;
-      transition:color 0.2s;
-    }
-    
-    nav a:hover {color:#2c5aa0;}
-    
-    .hero {
-      max-width:1000px;
-      margin:0 auto;
-      padding:80px 20px 60px;
-      text-align:center;
-    }
-    
-    h1 {
-      font-size:3.2em;
-      margin-bottom:16px;
-      color:#1a1a1a;
-      font-weight:700;
-    }
-    
-    .tagline {
-      font-size:1.5em;
-      color:#666;
-      margin-bottom:40px;
-      font-weight:400;
-    }
-    
-    .about-section {
-      max-width:1000px;
-      margin:60px auto;
-      padding:0 20px;
-    }
-    
-    .about-section h2 {
-      font-size:2em;
-      margin-bottom:24px;
-      color:#1a1a1a;
-    }
-    
-    .about-text {
-      font-size:1.05em;
-      color:#444;
-      line-height:1.8;
-      margin-bottom:32px;
-    }
-    
-    .apps-section {
-      max-width:1000px;
-      margin:60px auto;
-      padding:0 20px;
-    }
-    
-    .apps-section h2 {
-      font-size:2em;
-      margin-bottom:40px;
-      color:#1a1a1a;
-      text-align:center;
-    }
-    
-    .apps-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:32px;
-      margin-bottom:40px;
-    }
-    
-    .app-card {
-      background:#f8f9fa;
-      border:1px solid #e9ecef;
-      border-radius:8px;
-      padding:32px;
-      transition:transform 0.2s,box-shadow 0.2s;
-    }
-    
-    .app-card:hover {
-      transform:translateY(-4px);
-      box-shadow:0 8px 24px rgba(0,0,0,0.08);
-    }
-    
-    .app-card h3 {
-      font-size:1.4em;
-      margin-bottom:12px;
-      color:#2c5aa0;
-    }
-    
-    .app-card p {
-      color:#666;
-      font-size:1.05em;
-    }
-    
-    .status {
-      background:#e3f2fd;
-      color:#1565c0;
-      padding:12px 16px;
-      border-radius:4px;
-      font-size:0.95em;
-      margin-top:16px;
-      font-weight:500;
-    }
-    
-    footer {
-      background:#f8f9fa;
-      border-top:1px solid #e9ecef;
-      margin-top:80px;
-      padding:48px 20px;
-    }
-    
-    .footer-content {
-      max-width:1000px;
-      margin:0 auto;
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:32px;
-      margin-bottom:32px;
-    }
-    
-    .footer-section h4 {
-      font-size:1.05em;
-      margin-bottom:16px;
-      color:#1a1a1a;
-      font-weight:600;
-    }
-    
-    .footer-section p {
-      color:#666;
-      font-size:0.95em;
-      line-height:1.8;
-    }
-    
-    .footer-section a {
-      color:#2c5aa0;
-      text-decoration:none;
-      transition:color 0.2s;
-    }
-    
-    .footer-section a:hover {
-      text-decoration:underline;
-    }
-    
-    .footer-bottom {
-      max-width:1000px;
-      margin:0 auto;
-      padding-top:32px;
-      border-top:1px solid #e9ecef;
-      text-align:center;
-      color:#999;
-      font-size:0.9em;
-    }
-    
-    @media (max-width:640px) {
-      .header-content {flex-direction:column;gap:20px;}
-      nav {display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
-      nav a {margin-left:0;}
-      h1 {font-size:2.2em;}
-      .tagline {font-size:1.2em;}
-      .apps-grid {grid-template-columns:1fr;}
-    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;background:#ffffff;color:#1a1a1a;line-height:1.6}
+    header{background:#f8f9fa;border-bottom:1px solid #e9ecef;padding:24px 20px;position:sticky;top:0;z-index:100}
+    .header-content{max-width:1000px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+    .logo{font-size:1.8em;font-weight:700;color:#2c5aa0;text-decoration:none}
+    nav a{margin-left:32px;color:#1a1a1a;text-decoration:none;font-size:0.95em;transition:color .2s}
+    nav a:hover{color:#2c5aa0}
+    .hero{max-width:1000px;margin:0 auto;padding:80px 20px 60px;text-align:center}
+    h1{font-size:3.2em;margin-bottom:16px;color:#1a1a1a;font-weight:700}
+    .tagline{font-size:1.5em;color:#666;margin-bottom:40px;font-weight:400}
+    .about-section,.apps-section{max-width:1000px;margin:60px auto;padding:0 20px}
+    h2{font-size:2em;margin-bottom:24px;color:#1a1a1a;text-align:center}
+    .about-text{font-size:1.05em;color:#444;line-height:1.8;margin-bottom:32px}
+    .apps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;margin-bottom:40px}
+    .app-card{background:#f8f9fa;border:1px solid #e9ecef;border-radius:8px;padding:32px;transition:transform .2s,box-shadow .2s}
+    .app-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+    .app-card h3{font-size:1.4em;margin-bottom:12px;color:#2c5aa0}
+    .app-card p{color:#666;font-size:1.05em}
+    .status{background:#e3f2fd;color:#1565c0;padding:12px 16px;border-radius:4px;font-size:.95em;margin-top:16px;font-weight:500}
+    footer{background:#f8f9fa;border-top:1px solid #e9ecef;margin-top:80px;padding:48px 20px}
+    .footer-content{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:32px;margin-bottom:32px}
+    .footer-section h4{font-size:1.05em;margin-bottom:16px;color:#1a1a1a;font-weight:600}
+    .footer-section p{color:#666;font-size:.95em;line-height:1.8}
+    .footer-section a{color:#2c5aa0;text-decoration:none}
+    .footer-section a:hover{text-decoration:underline}
+    .footer-bottom{max-width:1000px;margin:0 auto;padding-top:32px;border-top:1px solid #e9ecef;text-align:center;color:#999;font-size:.9em}
+    @media(max-width:640px){.header-content{flex-direction:column;gap:20px}nav{gap:16px;flex-wrap:wrap;justify-content:center}h1{font-size:2.2em}.tagline{font-size:1.2em}.apps-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
   <header>
     <div class="header-content">
-      <a href="#" class="logo">CommonLogix</a>
+      <a href="/" class="logo">CommonLogix</a>
       <nav>
-        <a href="#about">About</a>
+        <a href="/about.html">About</a>
         <a href="#apps">Apps</a>
-        <a href="#contact">Contact</a>
+        <a href="/privacy.html">Privacy</a>
       </nav>
     </div>
   </header>
@@ -221,14 +54,10 @@
       <p class="tagline">Premium iOS Applications for Faith, Family, and Adventure</p>
     </section>
 
-    <section id="about" class="about-section">
+    <section class="about-section">
       <h2>About CommonLogix</h2>
-      <p class="about-text">
-        CommonLogix LLC is a focused iOS app development company dedicated to creating thoughtful, user-centered applications that enhance daily life. We build apps that help people deepen their faith, strengthen family bonds, and explore the world with intention.
-      </p>
-      <p class="about-text">
-        Our development philosophy centers on quality over quantity—each app is carefully crafted to solve real problems with elegant design and intuitive functionality.
-      </p>
+      <p class="about-text">CommonLogix LLC is a focused iOS app development company dedicated to creating thoughtful, user-centered applications that enhance daily life.</p>
+      <p class="about-text">Our philosophy: quality over quantity — each app is crafted to solve real problems with elegant design and intuitive functionality.</p>
     </section>
 
     <section id="apps" class="apps-section">
@@ -236,55 +65,38 @@
       <div class="apps-grid">
         <div class="app-card">
           <h3>Sunday</h3>
-          <p>A beautifully designed Catholic habit tracker designed to help users maintain consistency in their faith practice through visual progress tracking and daily motivation.</p>
+          <p>A beautifully designed Catholic habit tracker that helps users stay consistent in faith through visual progress and daily motivation.</p>
           <div class="status">Coming to App Store 2025</div>
         </div>
-        
         <div class="app-card">
           <h3>DadQuest</h3>
-          <p>A gamified parenting companion that delivers 2-minute daily missions, helping fathers build stronger connections with their children through intentional, micro-moments.</p>
+          <p>A gamified parenting companion delivering 2-minute daily missions to help fathers build stronger connections with their children.</p>
           <div class="status">Coming to App Store 2025</div>
         </div>
-        
         <div class="app-card">
           <h3>Big Island Travel</h3>
-          <p>A comprehensive local travel guide for Hawaii's Big Island, providing personalized recommendations and insider knowledge for visitors seeking authentic experiences.</p>
+          <p>A comprehensive local guide for Hawaii's Big Island, offering personalized recommendations and insider knowledge for authentic experiences.</p>
           <div class="status">Coming to App Store 2025</div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer id="contact">
+  <footer>
     <div class="footer-content">
       <div class="footer-section">
         <h4>Company</h4>
-        <p>
-          CommonLogix LLC<br>
-          iOS App Development<br>
-          <a href="mailto:info@commonlogix.com">info@commonlogix.com</a>
-        </p>
+        <p>CommonLogix LLC<br>iOS App Development<br><a href="mailto:info@commonlogix.com">info@commonlogix.com</a></p>
       </div>
-      
       <div class="footer-section">
         <h4>Legal</h4>
-        <p>
-          <a href="#privacy">Privacy Policy</a><br>
-          <a href="#terms">Terms of Service</a><br>
-          All apps comply with App Store guidelines
-        </p>
+        <p><a href="/privacy.html">Privacy Policy & Terms</a><br>All apps comply with App Store guidelines</p>
       </div>
-      
       <div class="footer-section">
         <h4>Developer</h4>
-        <p>
-          Building with React Native & Expo<br>
-          Distributed via Apple App Store<br>
-          Quality-focused development
-        </p>
+        <p>Building with React Native & Expo<br>Distributed via Apple App Store</p>
       </div>
     </div>
-    
     <div class="footer-bottom">
       <p>&copy; 2025 CommonLogix LLC. All rights reserved.</p>
     </div>
