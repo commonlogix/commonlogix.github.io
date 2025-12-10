@@ -1,105 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="CommonLogix LLC - Premium iOS app development for faith, family, and adventure">
-  <meta name="author" content="CommonLogix LLC">
-  <title>CommonLogix LLC - iOS App Development</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CommonLogix – Solo dev who actually ships</title>
+  <meta name="description" content="Indie iOS apps built by one very stubborn astronaut. Sunday • DadQuest • Big Island Travel." />
   <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;background:#ffffff;color:#1a1a1a;line-height:1.6}
-    header{background:#f8f9fa;border-bottom:1px solid #e9ecef;padding:24px 20px;position:sticky;top:0;z-index:100}
-    .header-content{max-width:1000px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
-    .logo{font-size:1.8em;font-weight:700;color:#2c5aa0;text-decoration:none}
-    nav a{margin-left:32px;color:#1a1a1a;text-decoration:none;font-size:0.95em;transition:color .2s}
-    nav a:hover{color:#2c5aa0}
-    .hero{max-width:1000px;margin:0 auto;padding:80px 20px 60px;text-align:center}
-    h1{font-size:3.2em;margin-bottom:16px;color:#1a1a1a;font-weight:700}
-    .tagline{font-size:1.5em;color:#666;margin-bottom:40px;font-weight:400}
-    .about-section,.apps-section{max-width:1000px;margin:60px auto;padding:0 20px}
-    h2{font-size:2em;margin-bottom:24px;color:#1a1a1a;text-align:center}
-    .about-text{font-size:1.05em;color:#444;line-height:1.8;margin-bottom:32px}
-    .apps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;margin-bottom:40px}
-    .app-card{background:#f8f9fa;border:1px solid #e9ecef;border-radius:8px;padding:32px;transition:transform .2s,box-shadow .2s}
-    .app-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
-    .app-card h3{font-size:1.4em;margin-bottom:12px;color:#2c5aa0}
-    .app-card p{color:#666;font-size:1.05em}
-    .status{background:#e3f2fd;color:#1565c0;padding:12px 16px;border-radius:4px;font-size:.95em;margin-top:16px;font-weight:500}
-    footer{background:#f8f9fa;border-top:1px solid #e9ecef;margin-top:80px;padding:48px 20px}
-    .footer-content{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:32px;margin-bottom:32px}
-    .footer-section h4{font-size:1.05em;margin-bottom:16px;color:#1a1a1a;font-weight:600}
-    .footer-section p{color:#666;font-size:.95em;line-height:1.8}
-    .footer-section a{color:#2c5aa0;text-decoration:none}
-    .footer-section a:hover{text-decoration:underline}
-    .footer-bottom{max-width:1000px;margin:0 auto;padding-top:32px;border-top:1px solid #e9ecef;text-align:center;color:#999;font-size:.9em}
-    @media(max-width:640px){.header-content{flex-direction:column;gap:20px}nav{gap:16px;flex-wrap:wrap;justify-content:center}h1{font-size:2.2em}.tagline{font-size:1.2em}.apps-grid{grid-template-columns:1fr}}
+    :root{--bg:#0f0f0f;--text:#f0f0f0;--accent-orange:#ff6b35;--card:#1a1a1a}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    header{position:fixed;top:0;left:0;right:0;height:70px;backdrop-filter:blur(10px);background:rgba(15,15,15,0.9);border-bottom:1px solid #333;z-index:100}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+    .header-inner{height:70px;display:flex;align-items:center;justify-content:space-between}
+    .logo{display:flex;align-items:center;gap:12px;font-weight:800;font-size:1.5rem;text-decoration:none;color:white}
+    .logo-icon{width:40px;height:40px;border-radius:12px}
+    nav a{color:var(--text);margin-left:2rem;text-decoration:none;opacity:0.8}
+    nav a:hover{opacity:1;color:var(--accent-orange)}
+    main{margin-top:70px}
+    .hero{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;padding:6rem 0}
+    .hero h1{font-size:4.5rem;line-height:1;margin:0}
+    .hero p{font-size:1.4rem;opacity:0.9;max-width:500px}
+    .btn{display:inline-block;background:var(--accent-orange);color:#000;padding:1rem 2rem;border-radius:50px;font-weight:700;margin-top:1.5rem;text-decoration:none}
+    .ticker{background:var(--accent-orange);color:#000;padding:12px 0;overflow:hidden;white-space:nowrap;font-weight:700}
+    .ticker span{display:inline-block;padding-left:100%;animation:ticker 20s linear infinite}
+    @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+    .apps{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem;padding:6rem 0}
+    .card{background:var(--card);border-radius:16px;overflow:hidden;transition:transform .3s}
+    .card:hover{transform:translateY(-12px)}
+    .card img{width:100%;height:200px;object-fit:cover}
+    .card-body{padding:1.5rem}
+    footer{text-align:center;padding:3rem 0;border-top:1px solid #333}
+    @media(max-width:900px){.hero{grid-template-columns:1fr;text-align:center}.hero img{order:-1}}
   </style>
 </head>
 <body>
   <header>
-    <div class="header-content">
-      <a href="/" class="logo">CommonLogix</a>
+    <div class="container header-inner">
+      <a class="logo" href="#">
+        <div class="logo-icon">
+          <img src="logo.png" alt="CommonLogix Monkey Astronaut">
+        </div>
+        <span>CommonLogix</span>
+      </a>
       <nav>
-        <a href="/about.html">About</a>
         <a href="#apps">Apps</a>
-        <a href="/privacy.html">Privacy</a>
+        <a href="mailto:info@commonlogix.com">Contact</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <div class="ticker">
+    <span>NOW SHIPPING: Sunday • DadQuest • Big Island Travel • Common sense included free of charge • </span>
+  </div>
+
+  <main class="container">
     <section class="hero">
-      <h1>CommonLogix LLC</h1>
-      <p class="tagline">Premium iOS Applications for Faith, Family, and Adventure</p>
+      <div>
+        <h1>Solo dev.<br>Real apps.<br>No bullshit.</h1>
+        <p>I build small, focused iOS apps that people actually use. No VC. No 80-person team. Just one stubborn astronaut and a Mac.</p>
+        <a href="#apps" class="btn">See the apps</a>
+      </div>
+      <div>
+        <img src="hero.jpg" alt="Retro Mac setup" style="border-radius:16px;box-shadow:0 20px 40px rgba(0,0,0,0.6);width:100%;">
+      </div>
     </section>
 
-    <section class="about-section">
-      <h2>About CommonLogix</h2>
-      <p class="about-text">CommonLogix LLC is a focused iOS app development company dedicated to creating thoughtful, user-centered applications that enhance daily life.</p>
-      <p class="about-text">Our philosophy: quality over quantity — each app is crafted to solve real problems with elegant design and intuitive functionality.</p>
-    </section>
-
-    <section id="apps" class="apps-section">
-      <h2>Our Applications</h2>
-      <div class="apps-grid">
-        <div class="app-card">
+    <section id="apps" class="apps">
+      <div class="card">
+        <img src="https://via.placeholder.com/600x400/001F3F/ffffff?text=Sunday" alt="Sunday">
+        <div class="card-body">
           <h3>Sunday</h3>
-          <p>A beautifully designed Catholic habit tracker that helps users stay consistent in faith through visual progress and daily motivation.</p>
-          <div class="status">Coming to App Store 2025</div>
-        </div>
-        <div class="app-card">
-          <h3>DadQuest</h3>
-          <p>A gamified parenting companion delivering 2-minute daily missions to help fathers build stronger connections with their children.</p>
-          <div class="status">Coming to App Store 2025</div>
-        </div>
-        <div class="app-card">
-          <h3>Big Island Travel</h3>
-          <p>A comprehensive local guide for Hawaii's Big Island, offering personalized recommendations and insider knowledge for authentic experiences.</p>
-          <div class="status">Coming to App Store 2025</div>
+          <p>Catholic Mass streak tracker. Because missing Sunday feels worse than missing leg day.</p>
         </div>
       </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/600x400/001F3F/ffffff?text=DadQuest" alt="DadQuest">
+        <div class="card-body">
+          <h3>DadQuest</h3>
+          <p>One tiny dad-kid quest every day. Turns fatherhood into an RPG you might actually win.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/600x400/001F3F/ffffff?text=Big+Island" alt="Big Island Travel">
+        <div class="card-body">
+          <h3>Big Island Travel</h3>
+          <p>Locals-approved guide to Hawaiʻi Island. No tourist traps. No rental-car scams.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="text-align:center;padding:6rem 0;">
+      <h2 style="font-size:3rem;">Let’s talk</h2>
+      <p style="font-size:1.5rem;margin:2rem 0;">
+        <a href="mailto:info@commonlogix.com" style="color:var(--accent-orange);text-decoration:none;">info@commonlogix.com</a>
+      </p>
     </section>
   </main>
 
   <footer>
-    <div class="footer-content">
-      <div class="footer-section">
-        <h4>Company</h4>
-        <p>CommonLogix LLC<br>iOS App Development<br><a href="mailto:info@commonlogix.com">info@commonlogix.com</a></p>
-      </div>
-      <div class="footer-section">
-        <h4>Legal</h4>
-        <p><a href="/privacy.html">Privacy Policy & Terms</a><br>All apps comply with App Store guidelines</p>
-      </div>
-      <div class="footer-section">
-        <h4>Developer</h4>
-        <p>Building with React Native & Expo<br>Distributed via Apple App Store</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 CommonLogix LLC. All rights reserved.</p>
-    </div>
+    <p>© 2025 CommonLogix LLC • One dude. Three apps. Infinite stubbornness.</p>
   </footer>
 </body>
 </html>
