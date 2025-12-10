@@ -6,8 +6,6 @@
   <meta name="description" content="CommonLogix Mission - Build what makes sense. Ship it fast.">
   <title>Mission - CommonLogix®</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
-    
     * {
       margin: 0;
       padding: 0;
@@ -20,21 +18,241 @@
       --text-white: #ffffff;
       --text-light: #e8e8e8;
       --accent-orange: #ff6b35;
-      --accent-orange-dark: #e55a2b;
     }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
       background: var(--bg-dark);
       color: var(--text-white);
-      overflow-x: hidden;
+      line-height: 1.8;
     }
 
-    /* HEADER */
     header {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       background: rgba(15, 15, 15, 0.95);
-      backdrop-
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      padding: 16px 32px;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-white);
+    }
+
+    .logo-text {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .logo-text .reg {
+      font-size: 10px;
+      vertical-align: super;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-orange);
+    }
+
+    main {
+      margin-top: 80px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 60px 40px;
+    }
+
+    h1 {
+      font-size: 56px;
+      font-weight: 900;
+      margin-bottom: 48px;
+      letter-spacing: -1px;
+      color: var(--text-white);
+    }
+
+    .mission-intro {
+      font-size: 18px;
+      color: var(--accent-orange);
+      font-weight: 700;
+      margin-bottom: 32px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .mission-section {
+      margin-bottom: 40px;
+      color: var(--text-light);
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .mission-section p {
+      margin-bottom: 24px;
+    }
+
+    .mission-section strong {
+      color: var(--accent-orange);
+    }
+
+    .highlight {
+      color: var(--accent-orange);
+      font-weight: 700;
+    }
+
+    footer {
+      background: var(--bg-darker);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 60px 40px;
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+
+    .social-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: color 0.3s;
+      text-transform: uppercase;
+    }
+
+    .social-links a:hover {
+      color: var(--accent-orange);
+    }
+
+    .footer-bottom {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 13px;
+      letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 12px 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      main {
+        padding: 40px 20px;
+        margin-top: 60px;
+      }
+
+      h1 {
+        font-size: 36px;
+      }
+
+      .mission-section {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <a href="index.html" class="logo-container">
+        <img src="logo.png" alt="CommonLogix" style="width: 40px; height: 40px; border-radius: 4px;">
+        <div class="logo-text">
+          CommonLogix<span class="reg">®</span>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#apps">Apps</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="mission-intro">Our Mission</div>
+    <h1>Build what actually makes sense. Ship it fast.</h1>
+
+    <div class="mission-section">
+      <p>CommonLogix exists for one simple reason: the world is drowning in overbuilt apps written by committees who haven't touched a real problem in years. I build the opposite.</p>
+    </div>
+
+    <div class="mission-section">
+      <p>This studio is a solo cockpit — an indie dev with a stubborn love for clarity, craft, and common sense. No layers. No legacy sludge. No "stakeholder syncs." Just useful tools shipped quickly, polished relentlessly, and designed with the quiet confidence that practical beats flashy every time.</p>
+    </div>
+
+    <div class="mission-section">
+      <p>Every app under the CommonLogix banner follows the same code: <strong>Solve something real. Keep it human. Make it beautiful. Don't waste anyone's time — especially the user's.</strong></p>
+    </div>
+
+    <div class="mission-section">
+      <p>Good software should feel like a clean desk, a sharp pencil, or a well-made tool: intuitive, reliable, and weirdly satisfying. That's the goal. Tiny apps that punch way above their weight. Micro-experiences that turn into daily habits. Technology that earns a space on your home screen because it respects the person holding the phone.</p>
+    </div>
+
+    <div class="mission-section">
+      <p><span class="highlight">Old school common sense is the compass.</span> <span class="highlight">Modern execution is the engine.</span> Everything else is noise.</p>
+    </div>
+
+    <div class="mission-section">
+      <p>CommonLogix isn't trying to change the world. Just make it run a little smoother — one fast-shipped app at a time.</p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="https://www.youtube.com/@CommonLogix" target="_blank">YouTube</a>
+        <a href="https://x.com/common_logix" target="_blank">Twitter X</a>
+        <a href="https://www.tiktok.com/@common_logix" target="_blank">TikTok</a>
+        <a href="https://www.instagram.com/commonlogix/" target="_blank">Instagram</a>
+        <a href="mailto:info@commonlogix.com">Email</a>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 CommonLogix LLC. Shipping sanity, one app at a time.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
