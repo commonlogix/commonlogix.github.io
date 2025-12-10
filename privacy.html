@@ -3,33 +3,300 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Privacy Policy - CommonLogix LLC</title>
+  <meta name="description" content="CommonLogix Privacy Policy - How we handle your data.">
+  <title>Privacy Policy - CommonLogix®</title>
   <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:-apple-system,system-ui,sans-serif;background:#fff;color:#1a1a1a;line-height:1.7;padding:40px}
-    .container{max-width:800px;margin:0 auto}
-    h1{font-size:2.4em;margin-bottom:20px}
-    h2{font-size:1.6em;margin:32px 0 16px}
-    p{margin-bottom:16px}
-    a{color:#2c5aa0}
-    footer{margin-top:100px;padding-top:40px;border-top:1px solid #eee;text-align:center;color:#888;font-size:.9em}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-dark: #0f0f0f;
+      --bg-darker: #0a0a0a;
+      --text-white: #ffffff;
+      --text-light: #e8e8e8;
+      --accent-orange: #ff6b35;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-white);
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(15, 15, 15, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      padding: 16px 32px;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-white);
+    }
+
+    .logo-text {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .logo-text .reg {
+      font-size: 10px;
+      vertical-align: super;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-orange);
+    }
+
+    /* MAIN CONTENT */
+    main {
+      margin-top: 80px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 60px 40px;
+    }
+
+    h1 {
+      font-size: 48px;
+      font-weight: 900;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+
+    .last-updated {
+      color: var(--text-light);
+      font-size: 14px;
+      margin-bottom: 48px;
+      letter-spacing: 0.5px;
+    }
+
+    h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-top: 40px;
+      margin-bottom: 16px;
+      color: var(--accent-orange);
+    }
+
+    p {
+      color: var(--text-light);
+      margin-bottom: 16px;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 24px;
+      color: var(--text-light);
+    }
+
+    li {
+      margin-bottom: 12px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent-orange);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg-darker);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 60px 40px;
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+
+    .social-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: color 0.3s;
+      text-transform: uppercase;
+    }
+
+    .social-links a:hover {
+      color: var(--accent-orange);
+    }
+
+    .footer-bottom {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 13px;
+      letter-spacing: 0.5px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      header {
+        padding: 12px 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      main {
+        padding: 40px 20px;
+        margin-top: 60px;
+      }
+
+      h1 {
+        font-size: 32px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
+  <!-- HEADER -->
+  <header>
+    <div class="header-content">
+      <a href="index.html" class="logo-container">
+        <img src="logo.png" alt="CommonLogix" style="width: 40px; height: 40px; border-radius: 4px;">
+        <div class="logo-text">
+          CommonLogix<span class="reg">®</span>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#apps">Apps</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
     <h1>Privacy Policy</h1>
-    <p><strong>Effective Date: December 2025</strong></p>
-    <p>CommonLogix LLC ("we", "us") respects your privacy.</p>
-    <h2>Data We Collect</h2>
-    <p>Our apps collect <strong>no personal data</strong>. All progress, streaks, and settings are stored locally on your device only.</p>
-    <h2>No Tracking or Analytics</h2>
-    <p>We do not use third-party analytics, advertising, or tracking services.</p>
-    <h2>Contact</h2>
-    <p>For support: <a href="mailto:info@commonlogix.com">info@commonlogix.com</a></p>
-    <footer>
-      <p><a href="/">← Home</a> • <a href="/about.html">About</a></p>
-      <p>© 2025 CommonLogix LLC</p>
-    </footer>
-  </div>
+    <p class="last-updated">Last updated: January 2025</p>
+
+    <h2>Introduction</h2>
+    <p>CommonLogix LLC ("we," "us," "our," or "Company") respects your privacy and is committed to protecting it. This Privacy Policy explains how we collect, use, disclose, and otherwise handle information when you use our mobile applications, websites, and services.</p>
+
+    <h2>Information We Collect</h2>
+    <p>We believe in collecting only what's necessary. Here's what we do and don't collect:</p>
+    <ul>
+      <li><strong>Information You Provide:</strong> When you use our apps, you may voluntarily provide information such as preferences, settings, or content you create within the app.</li>
+      <li><strong>Usage Information:</strong> We may collect basic usage data to understand how our apps perform and improve user experience. This is done anonymously whenever possible.</li>
+      <li><strong>Device Information:</strong> We may collect information about your device type, operating system version, and unique device identifiers for app functionality and crash reporting.</li>
+      <li><strong>We Do NOT Collect:</strong> Personal data, location data, health data, or any other sensitive information unless explicitly required by the app's core functionality and with your consent.</li>
+    </ul>
+
+    <h2>How We Use Your Information</h2>
+    <p>We use collected information only for these purposes:</p>
+    <ul>
+      <li>Providing and maintaining our services</li>
+      <li>Improving app performance and user experience</li>
+      <li>Diagnosing and fixing technical issues</li>
+      <li>Complying with legal obligations</li>
+      <li>Protecting against fraud and misuse</li>
+    </ul>
+
+    <h2>Data Security</h2>
+    <p>We implement reasonable security measures to protect your information. However, no method of transmission over the internet is 100% secure. While we strive to use commercially acceptable means, we cannot guarantee absolute security.</p>
+
+    <h2>Third-Party Services</h2>
+    <p>Our apps may use third-party services for analytics, crash reporting, or app functionality. These services have their own privacy policies. We are not responsible for their practices. Check their policies directly.</p>
+
+    <h2>App Store Privacy</h2>
+    <p>When you download our apps from the Apple App Store or other platforms, those platforms have their own privacy policies. We encourage you to review them.</p>
+
+    <h2>Children's Privacy</h2>
+    <p>Our apps are not directed to children under 13. We do not knowingly collect personal information from children. If we become aware that a child has provided us with personal information, we will delete it promptly.</p>
+
+    <h2>Your Rights</h2>
+    <p>Depending on your location, you may have rights regarding your data, including the right to access, correct, or delete information. Contact us at <a href="mailto:info@commonlogix.com">info@commonlogix.com</a> to exercise these rights.</p>
+
+    <h2>Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. We will notify you of changes by updating the "Last updated" date above. Your continued use of our apps constitutes acceptance of the updated policy.</p>
+
+    <h2>Contact Us</h2>
+    <p>If you have questions about this Privacy Policy or our privacy practices, contact us at:</p>
+    <p>
+      <strong>CommonLogix LLC</strong><br>
+      Email: <a href="mailto:info@commonlogix.com">info@commonlogix.com</a>
+    </p>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="https://www.youtube.com/@CommonLogix" target="_blank">YouTube</a>
+        <a href="https://x.com/common_logix" target="_blank">Twitter X</a>
+        <a href="https://www.tiktok.com/@common_logix" target="_blank">TikTok</a>
+        <a href="https://www.instagram.com/commonlogix/" target="_blank">Instagram</a>
+        <a href="mailto:info@commonlogix.com">Email</a>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 CommonLogix LLC. Shipping sanity, one app at a time.</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
