@@ -1,103 +1,636 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CommonLogix – Solo dev who actually ships</title>
-  <meta name="description" content="Indie iOS apps built by one very stubborn astronaut. Sunday • DadQuest • Big Island Travel." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CommonLogix - Old school common sense. Modern execution. One indie dev shipping fast.">
+  <title>CommonLogix® | Common Sense Shipping Fast</title>
   <style>
-    :root{--bg:#0f0f0f;--text:#f0f0f0;--accent-orange:#ff6b35;--card:#1a1a1a}
-    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-    header{position:fixed;top:0;left:0;right:0;height:70px;backdrop-filter:blur(10px);background:rgba(15,15,15,0.9);border-bottom:1px solid #333;z-index:100}
-    .container{max-width:1200px;margin:0 auto;padding:0 20px}
-    .header-inner{height:70px;display:flex;align-items:center;justify-content:space-between}
-    .logo{display:flex;align-items:center;gap:12px;font-weight:800;font-size:1.5rem;text-decoration:none;color:white}
-    .logo-icon{width:40px;height:40px;border-radius:12px}
-    nav a{color:var(--text);margin-left:2rem;text-decoration:none;opacity:0.8}
-    nav a:hover{opacity:1;color:var(--accent-orange)}
-    main{margin-top:70px}
-    .hero{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;padding:6rem 0}
-    .hero h1{font-size:4.5rem;line-height:1;margin:0}
-    .hero p{font-size:1.4rem;opacity:0.9;max-width:500px}
-    .btn{display:inline-block;background:var(--accent-orange);color:#000;padding:1rem 2rem;border-radius:50px;font-weight:700;margin-top:1.5rem;text-decoration:none}
-    .ticker{background:var(--accent-orange);color:#000;padding:12px 0;overflow:hidden;white-space:nowrap;font-weight:700}
-    .ticker span{display:inline-block;padding-left:100%;animation:ticker 20s linear infinite}
-    @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
-    .apps{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem;padding:6rem 0}
-    .card{background:var(--card);border-radius:16px;overflow:hidden;transition:transform .3s}
-    .card:hover{transform:translateY(-12px)}
-    .card img{width:100%;height:200px;object-fit:cover}
-    .card-body{padding:1.5rem}
-    footer{text-align:center;padding:3rem 0;border-top:1px solid #333}
-    @media(max-width:900px){.hero{grid-template-columns:1fr;text-align:center}.hero img{order:-1}}
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-dark: #0f0f0f;
+      --bg-darker: #0a0a0a;
+      --text-white: #ffffff;
+      --text-light: #e8e8e8;
+      --accent-orange: #ff6b35;
+      --accent-orange-dark: #e55a2b;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-white);
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(15, 15, 15, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      padding: 16px 32px;
+    }
+
+    .header-content {
+      max-width: 1600px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-white);
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--accent-orange);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 20px;
+      color: var(--bg-dark);
+    }
+
+    .logo-text {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .logo-text .reg {
+      font-size: 10px;
+      vertical-align: super;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-orange);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      margin-top: 64px;
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 60px 40px;
+      gap: 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        radial-gradient(circle at 20% 50%, rgba(255, 107, 53, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 107, 53, 0.03) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+
+    .hero-eyebrow {
+      font-size: 14px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent-orange);
+      margin-bottom: 24px;
+      font-weight: 600;
+    }
+
+    .hero-title {
+      font-size: clamp(48px, 8vw, 92px);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -2px;
+      margin-bottom: 32px;
+      color: var(--text-white);
+      font-family: 'GT America', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .hero-title-accent {
+      color: var(--accent-orange);
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-light);
+      margin-bottom: 32px;
+    }
+
+    .hero-tagline {
+      font-size: 15px;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 48px;
+      line-height: 1.6;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--accent-orange);
+      color: var(--bg-dark);
+      padding: 18px 42px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+
+    .cta-button:hover {
+      background: var(--accent-orange-dark);
+      transform: scale(1.05);
+      box-shadow: 0 20px 60px rgba(255, 107, 53, 0.3);
+    }
+
+    .cta-button:active {
+      transform: scale(0.98);
+    }
+
+    .arrow {
+      font-size: 18px;
+    }
+
+    /* HERO IMAGE */
+    .hero-image {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      border: 2px solid rgba(255, 107, 53, 0.3);
+      border-radius: 8px;
+      box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.5),
+        inset 0 0 60px rgba(255, 107, 53, 0.1);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    /* TICKER STRIP */
+    .ticker-strip {
+      background: var(--accent-orange);
+      color: var(--bg-dark);
+      padding: 20px 0;
+      overflow: hidden;
+      position: relative;
+      font-weight: 900;
+      font-size: 18px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .ticker-content {
+      display: flex;
+      animation: scroll 20s linear infinite;
+    }
+
+    .ticker-item {
+      padding-right: 60px;
+      display: flex;
+      align-items: center;
+    }
+
+    .ticker-item::after {
+      content: '•';
+      margin-left: 60px;
+      font-size: 24px;
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .ticker-content {
+      will-change: transform;
+    }
+
+    /* APPS SECTION */
+    .apps-section {
+      padding: 120px 40px;
+      background: var(--bg-dark);
+      position: relative;
+      z-index: 2;
+    }
+
+    .apps-header {
+      max-width: 1400px;
+      margin: 0 auto 80px;
+      text-align: center;
+    }
+
+    .apps-header h2 {
+      font-size: 56px;
+      font-weight: 900;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+
+    .apps-header p {
+      font-size: 18px;
+      color: var(--text-light);
+      letter-spacing: 0.5px;
+    }
+
+    .apps-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+    }
+
+    .app-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 107, 53, 0.2);
+      border-radius: 12px;
+      padding: 40px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .app-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-orange), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .app-card:hover {
+      border-color: rgba(255, 107, 53, 0.5);
+      background: rgba(255, 107, 53, 0.05);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(255, 107, 53, 0.15);
+    }
+
+    .app-card:hover::before {
+      opacity: 1;
+    }
+
+    .app-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .app-card h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text-white);
+    }
+
+    .app-card p {
+      font-size: 16px;
+      color: var(--text-light);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .app-status {
+      display: inline-block;
+      background: rgba(255, 107, 53, 0.2);
+      color: var(--accent-orange);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg-darker);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 60px 40px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .footer-tagline {
+      font-size: 18px;
+      color: var(--text-light);
+      margin-bottom: 32px;
+      letter-spacing: 0.5px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+
+    .social-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: color 0.3s;
+      text-transform: uppercase;
+    }
+
+    .social-links a:hover {
+      color: var(--accent-orange);
+    }
+
+    .footer-bottom {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 13px;
+      letter-spacing: 0.5px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 60px 30px;
+        gap: 40px;
+        min-height: auto;
+      }
+
+      .hero-image {
+        order: -1;
+      }
+
+      .hero-title {
+        font-size: clamp(36px, 6vw, 64px);
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 12px 20px;
+      }
+
+      .hero {
+        padding: 40px 20px;
+        gap: 30px;
+      }
+
+      .hero-title {
+        font-size: 42px;
+        line-height: 1;
+      }
+
+      .hero-subtitle {
+        font-size: 15px;
+      }
+
+      .ticker-strip {
+        font-size: 14px;
+        padding: 16px 0;
+      }
+
+      .apps-section {
+        padding: 80px 20px;
+      }
+
+      .apps-header h2 {
+        font-size: 36px;
+      }
+
+      .apps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .app-card {
+        padding: 30px;
+      }
+
+      .cta-button {
+        padding: 16px 36px;
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 32px;
+      }
+
+      .hero-subtitle {
+        font-size: 14px;
+      }
+
+      .hero-tagline {
+        font-size: 13px;
+      }
+
+      .cta-button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* UTILITIES */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    @supports (font-family: 'GT America') {
+      .hero-title {
+        font-family: 'GT America', sans-serif;
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- HEADER -->
   <header>
-    <div class="container header-inner">
-      <a class="logo" href="#">
+    <div class="header-content">
+      <a href="#" class="logo-container">
         <div class="logo-icon">
-          <img src="logo.png" alt="CommonLogix Monkey Astronaut">
+          🐵
         </div>
-        <span>CommonLogix</span>
+        <div class="logo-text">
+          CommonLogix<span class="reg">®</span>
+        </div>
       </a>
-      <nav>
+      <nav class="nav-links">
         <a href="#apps">Apps</a>
-        <a href="mailto:info@commonlogix.com">Contact</a>
+        <a href="#about">Mission</a>
+        <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
-  <div class="ticker">
-    <span>NOW SHIPPING: Sunday • DadQuest • Big Island Travel • Common sense included free of charge • </span>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Welcome to CommonLogix®</div>
+      <h1 class="hero-title">
+        OLD SCHOOL<br>
+        COMMON SENSE<span class="hero-title-accent">.</span><br>
+        <span class="hero-title-accent">MODERN EXECUTION.</span>
+      </h1>
+      <p class="hero-subtitle">
+        One solo astronaut building ridiculously useful apps that just make sense – no committees, no bloat, just code that respects your time and your brain.
+      </p>
+      <p class="hero-tagline">
+        Common sense isn't so common. Good thing I brought extra.
+      </p>
+      <a href="#apps" class="cta-button">
+        Enter Mission Control
+        <span class="arrow">→</span>
+      </a>
+    </div>
+
+    <div class="hero-image">
+      <img src="https://via.placeholder.com/600x400?text=Retro+Mac+Hero" alt="Solo Astronaut Dev Setup">
+    </div>
+  </section>
+
+  <!-- TICKER STRIP -->
+  <div class="ticker-strip">
+    <div class="ticker-content">
+      <div class="ticker-item">COMMON SENSE SHIPS FAST</div>
+      <div class="ticker-item">COMMON SENSE SHIPS FAST</div>
+      <div class="ticker-item">COMMON SENSE SHIPS FAST</div>
+      <div class="ticker-item">COMMON SENSE SHIPS FAST</div>
+      <div class="ticker-item">COMMON SENSE SHIPS FAST</div>
+    </div>
   </div>
 
-  <main class="container">
-    <section class="hero">
-      <div>
-        <h1>Solo dev.<br>Real apps.<br>No bullshit.</h1>
-        <p>I build small, focused iOS apps that people actually use. No VC. No 80-person team. Just one stubborn astronaut and a Mac.</p>
-        <a href="#apps" class="btn">See the apps</a>
-      </div>
-      <div>
-        <img src="hero.jpg" alt="Retro Mac setup" style="border-radius:16px;box-shadow:0 20px 40px rgba(0,0,0,0.6);width:100%;">
-      </div>
-    </section>
+  <!-- APPS SECTION -->
+  <section class="apps-section" id="apps">
+    <div class="apps-header">
+      <h2>The Arsenal</h2>
+      <p>Three apps. One vision. Zero committees.</p>
+    </div>
 
-    <section id="apps" class="apps">
-      <div class="card">
-        <img src="https://via.placeholder.com/600x400/001F3F/ffffff?text=Sunday" alt="Sunday">
-        <div class="card-body">
-          <h3>Sunday</h3>
-          <p>Catholic Mass streak tracker. Because missing Sunday feels worse than missing leg day.</p>
-        </div>
+    <div class="apps-grid">
+      <!-- Sunday -->
+      <div class="app-card">
+        <div class="app-icon">📿</div>
+        <h3>Sunday Mass</h3>
+        <p>Track your Holy Mass attendance with beautiful simplicity. Build consistency through visual progress tracking. Because your faith practice deserves better than a checkbox.</p>
+        <span class="app-status">Coming 2025</span>
       </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/600x400/001F3F/ffffff?text=DadQuest" alt="DadQuest">
-        <div class="card-body">
-          <h3>DadQuest</h3>
-          <p>One tiny dad-kid quest every day. Turns fatherhood into an RPG you might actually win.</p>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/600x400/001F3F/ffffff?text=Big+Island" alt="Big Island Travel">
-        <div class="card-body">
-          <h3>Big Island Travel</h3>
-          <p>Locals-approved guide to Hawaiʻi Island. No tourist traps. No rental-car scams.</p>
-        </div>
-      </div>
-    </section>
 
-    <section style="text-align:center;padding:6rem 0;">
-      <h2 style="font-size:3rem;">Let’s talk</h2>
-      <p style="font-size:1.5rem;margin:2rem 0;">
-        <a href="mailto:info@commonlogix.com" style="color:var(--accent-orange);text-decoration:none;">info@commonlogix.com</a>
-      </p>
-    </section>
-  </main>
+      <!-- DadQuest -->
+      <div class="app-card">
+        <div class="app-icon">🗺️</div>
+        <h3>DadQuest</h3>
+        <p>2-minute daily missions for better fatherhood. Gamified moments that strengthen your connection with your kids. Because the best parenting happens in micro-moments.</p>
+        <span class="app-status">Coming 2025</span>
+      </div>
 
-  <footer>
-    <p>© 2025 CommonLogix LLC • One dude. Three apps. Infinite stubbornness.</p>
+      <!-- Big Island Travel -->
+      <div class="app-card">
+        <div class="app-icon">🏝️</div>
+        <h3>Brah, No...</h3>
+        <p>Your personal local guide to Big Island adventures. Insider knowledge for authentic experiences. Built by someone who actually lives here.</p>
+        <span class="app-status">Coming 2025</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="footer-content">
+      <p class="footer-tagline">Old school common sense. Modern execution. One indie dev.</p>
+      <div class="social-links">
+        <a href="https://youtube.com" target="_blank">YouTube</a>
+        <a href="https://twitter.com" target="_blank">Twitter</a>
+        <a href="mailto:info@commonlogix.com">Email</a>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 CommonLogix LLC. Shipping sanity, one app at a time.</p>
+      </div>
+    </div>
   </footer>
 </body>
 </html>
