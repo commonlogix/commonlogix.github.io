@@ -404,6 +404,7 @@
       justify-content: center;
       gap: 32px;
       margin-bottom: 40px;
+      flex-wrap: wrap;
     }
 
     .social-links a {
@@ -424,6 +425,23 @@
       color: rgba(255, 255, 255, 0.5);
       font-size: 13px;
       letter-spacing: 0.5px;
+    }
+
+    .footer-links {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 12px;
+      margin: 0 16px;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-orange);
     }
 
     /* RESPONSIVE */
@@ -492,6 +510,10 @@
         padding: 16px 36px;
         font-size: 14px;
       }
+
+      .social-links {
+        gap: 16px;
+      }
     }
 
     @media (max-width: 480px) {
@@ -531,7 +553,7 @@
   <!-- HEADER -->
   <header>
     <div class="header-content">
-      <a href="#" class="logo-container">
+      <a href="index.html" class="logo-container">
         <img src="logo.png" alt="CommonLogix" style="width: 40px; height: 40px; border-radius: 4px;">
         <div class="logo-text">
           CommonLogix<span class="reg">®</span>
@@ -539,7 +561,7 @@
       </a>
       <nav class="nav-links">
         <a href="#apps">Apps</a>
-        <a href="#about">Mission</a>
+        <a href="mission.html">Mission</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -595,7 +617,7 @@
         <div class="app-icon">📿</div>
         <h3>Sunday Mass</h3>
         <p>Track your Holy Mass attendance with beautiful simplicity. Build consistency through visual progress tracking. Because your faith practice deserves better than a checkbox.</p>
-        <span class="app-status">Coming 2025</span>
+        <span class="app-status">Coming 2026</span>
       </div>
 
       <!-- DadQuest -->
@@ -603,7 +625,7 @@
         <div class="app-icon">🗺️</div>
         <h3>DadQuest</h3>
         <p>2-minute daily missions for better fatherhood. Gamified moments that strengthen your connection with your kids. Because the best parenting happens in micro-moments.</p>
-        <span class="app-status">Coming 2025</span>
+        <span class="app-status">Coming 2026</span>
       </div>
 
       <!-- Big Island Travel -->
@@ -611,7 +633,7 @@
         <div class="app-icon">🏝️</div>
         <h3>Brah, No...</h3>
         <p>Your personal local guide to Big Island adventures. Insider knowledge for authentic experiences. Built by someone who actually lives here.</p>
-        <span class="app-status">Coming 2025</span>
+        <span class="app-status">Coming 2026</span>
       </div>
     </div>
   </section>
@@ -621,12 +643,17 @@
     <div class="footer-content">
       <p class="footer-tagline">Old school common sense. Modern execution. One indie dev.</p>
       <div class="social-links">
-        <a href="https://youtube.com" target="_blank">YouTube</a>
-        <a href="https://twitter.com" target="_blank">Twitter</a>
+        <a href="https://www.youtube.com/@CommonLogix" target="_blank">YouTube</a>
+        <a href="https://x.com/common_logix" target="_blank">Twitter X</a>
+        <a href="https://www.tiktok.com/@common_logix" target="_blank">TikTok</a>
+        <a href="https://www.instagram.com/commonlogix/" target="_blank">Instagram</a>
         <a href="mailto:info@commonlogix.com">Email</a>
       </div>
       <div class="footer-bottom">
         <p>&copy; 2025 CommonLogix LLC. Shipping sanity, one app at a time.</p>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy Policy</a>
+        </div>
       </div>
     </div>
   </footer>
