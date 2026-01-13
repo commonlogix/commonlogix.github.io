@@ -1,294 +1,149 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>FaithHabit — Offline Catholic Habit Tracker</title>
-  <meta name="description" content="FaithHabit is a private, offline-first Catholic habit tracker for Mass, prayer, Gospel reading, saints, and journaling. No pressure. No subscriptions." />
-  <meta name="robots" content="index,follow" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FaithHabit - CommonLogix LLC</title>
+  <meta name="description" content="FaithHabit is a private, offline-first Catholic habit tracker for Mass, prayer, Gospel reading, saints, and journaling. No ads. No tracking. No noise.">
+
   <style>
-    :root{
-      --bg:#0b1220;
-      --card:#0f1a2f;
-      --text:#eaf0ff;
-      --muted:#a9b6d6;
-      --line:rgba(255,255,255,.10);
-      --accent:#6ee7ff;
-      --accent2:#b794ff;
-      --good:#7CFFB2;
-      --shadow: 0 20px 60px rgba(0,0,0,.45);
-      --radius:18px;
-      --max:1040px;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Helvetica,Arial,sans-serif;
-      background:
-        radial-gradient(1200px 600px at 20% 0%, rgba(110,231,255,.18), transparent 55%),
-        radial-gradient(900px 500px at 80% 10%, rgba(183,148,255,.14), transparent 55%),
-        linear-gradient(180deg, #070b14 0%, var(--bg) 55%, #070b14 100%);
-      color:var(--text);
-      line-height:1.45;
-    }
-    a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 64px;}
-    header{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:16px; padding:8px 0 28px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:12px; text-decoration:none;
-    }
-    .logo{
-      width:38px; height:38px; border-radius:12px;
-      background:linear-gradient(135deg, rgba(110,231,255,.35), rgba(183,148,255,.35));
-      border:1px solid var(--line);
-      box-shadow: var(--shadow);
-      display:grid; place-items:center;
-      font-weight:800;
-    }
-    .brand strong{font-size:16px; letter-spacing:.2px}
-    .brand span{display:block; font-size:12px; color:var(--muted); margin-top:2px}
-    .toplinks{
-      display:flex; flex-wrap:wrap; gap:10px;
-    }
-    .chip{
-      text-decoration:none;
-      padding:10px 12px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.04);
-      border-radius:999px;
-      color:var(--muted);
-      font-size:13px;
-    }
-    .chip:hover{color:var(--text); border-color:rgba(255,255,255,.22)}
-    .hero{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:18px;
-      align-items:stretch;
-      margin-top:4px;
-    }
-    @media (max-width: 900px){
-      .hero{grid-template-columns:1fr; }
-    }
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .pad{padding:26px}
-    h1{
-      font-size:44px;
-      line-height:1.05;
-      margin:0 0 12px;
-      letter-spacing:-.6px;
-    }
-    @media (max-width: 480px){ h1{font-size:36px} }
-    .sub{
-      font-size:16px;
-      color:var(--muted);
-      margin:0 0 18px;
-      max-width:52ch;
-    }
-    .badges{display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 22px}
-    .badge{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:10px 12px;
-      background:rgba(11,18,32,.55);
-      border:1px solid var(--line);
-      border-radius:999px;
-      font-size:13px;
-      color:var(--muted);
-    }
-    .dot{
-      width:10px; height:10px; border-radius:50%;
-      background:linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow:0 0 0 4px rgba(110,231,255,.10);
-    }
-    .ctaRow{display:flex; flex-wrap:wrap; gap:12px; margin-top:6px}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      padding:12px 14px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.06);
-      text-decoration:none;
-      font-weight:650;
-      font-size:14px;
-    }
-    .btn.primary{
-      background:linear-gradient(135deg, rgba(110,231,255,.22), rgba(183,148,255,.18));
-      border-color:rgba(255,255,255,.18);
-      color:var(--text);
-    }
-    .btn:hover{border-color:rgba(255,255,255,.26)}
-    .smallNote{color:var(--muted); font-size:12px; margin-top:12px}
-    .side{
-      display:flex; flex-direction:column;
-      justify-content:space-between;
-      min-height:100%;
-    }
-    .featureList{margin:0; padding:0; list-style:none}
-    .featureList li{
-      padding:14px 0;
-      border-top:1px solid var(--line);
-    }
-    .featureList li:first-child{border-top:none}
-    .featureList strong{display:block; margin-bottom:6px}
-    .featureList span{color:var(--muted); font-size:14px}
-    .section{
-      margin-top:18px;
-      display:grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap:14px;
-    }
-    @media (max-width: 900px){ .section{grid-template-columns:1fr} }
-    h2{margin:0 0 12px; font-size:18px}
-    .mini p{margin:0; color:var(--muted); font-size:14px}
-    footer{
-      margin-top:30px;
-      padding-top:18px;
-      border-top:1px solid var(--line);
-      color:var(--muted);
-      font-size:12px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      justify-content:space-between;
-    }
-    .legal a{color:var(--muted); text-decoration:none}
-    .legal a:hover{color:var(--text)}
+    * {margin:0;padding:0;box-sizing:border-box;}
+    body {font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;background:#ffffff;color:#1a1a1a;line-height:1.6;}
+    header {background:#f8f9fa;border-bottom:1px solid #e9ecef;padding:24px 20px;position:sticky;top:0;z-index:100;}
+    .header-content {max-width:1000px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
+    .logo {font-size:1.8em;font-weight:700;color:#2c5aa0;text-decoration:none;}
+    nav a {margin-left:32px;color:#1a1a1a;text-decoration:none;font-size:0.95em;transition:color .2s;}
+    nav a:hover {color:#2c5aa0;}
+
+    main {max-width:1000px;margin:80px auto 120px;padding:0 20px;}
+    .hero {text-align:center;margin-bottom:56px;}
+    h1 {font-size:3em;margin-bottom:16px;color:#1a1a1a;}
+    .subtitle {font-size:1.15em;color:#444;max-width:760px;margin:0 auto 28px;line-height:1.8;}
+    .badges {display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:0 auto 28px;max-width:900px;}
+    .badge {border:1px solid #e9ecef;background:#ffffff;padding:10px 14px;border-radius:999px;font-size:.95em;color:#444;}
+    .cta-row {display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:8px;}
+    .btn {display:inline-block;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:600;font-size:1em;border:1px solid #e9ecef;color:#1a1a1a;background:#ffffff;transition:transform .05s, border-color .2s, color .2s;}
+    .btn:hover {border-color:#cbd3da;color:#2c5aa0;}
+    .btn.primary {background:#2c5aa0;color:#ffffff;border-color:#2c5aa0;}
+    .btn.primary:hover {color:#ffffff;border-color:#244a84;}
+    .note {text-align:center;color:#666;font-size:.95em;margin-top:14px;}
+
+    .grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:40px;}
+    .card {border:1px solid #e9ecef;border-radius:14px;padding:22px;background:#ffffff;}
+    .card h2 {font-size:1.2em;margin-bottom:10px;color:#1a1a1a;}
+    .card p {color:#444;font-size:1em;line-height:1.8;}
+    .card ul {margin-top:10px;padding-left:18px;color:#444;}
+    .card li {margin:8px 0;line-height:1.7;}
+
+    .support {margin-top:44px;border-top:1px solid #e9ecef;padding-top:44px;}
+    .support h2 {font-size:1.6em;margin-bottom:12px;text-align:center;}
+    .support p {max-width:760px;margin:0 auto 14px;text-align:center;color:#444;line-height:1.8;}
+    .support a {color:#2c5aa0;text-decoration:none;}
+    .support a:hover {text-decoration:underline;}
+
+    footer {background:#f8f9fa;border-top:1px solid #e9ecef;padding:48px 20px;}
+    .footer-content {max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:32px;margin-bottom:0 auto 32px;}
+    .footer-section h4 {font-size:1.05em;margin-bottom:16px;color:#1a1a1a;font-weight:600;}
+    .footer-section p, .footer-section a {color:#666;font-size:.95em;line-height:1.8;}
+    .footer-section a:hover {text-decoration:underline;color:#2c5aa0;}
+    .footer-bottom {max-width:1000px;margin:0 auto;padding-top:32px;border-top:1px solid #e9ecef;text-align:center;color:#999;font-size:.9em;}
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <header>
-      <a class="brand" href="index.html">
-        <div class="logo">cl</div>
-        <div>
-          <strong>CommonLogix</strong>
-          <span>FaithHabit</span>
-        </div>
-      </a>
-
-      <nav class="toplinks">
-        <a class="chip" href="faithhabit.html" aria-current="page">FaithHabit</a>
-        <a class="chip" href="privacy.html">Privacy</a>
-        <a class="chip" href="about.html">About</a>
+  <header>
+    <div class="header-content">
+      <a href="/" class="logo">CommonLogix</a>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/faithhabit.html">FaithHabit</a>
+        <a href="/about.html">About</a>
+        <a href="/privacy.html">Privacy</a>
       </nav>
-    </header>
+    </div>
+  </header>
 
-    <main class="hero">
-      <section class="card">
-        <div class="pad">
-          <h1>FaithHabit</h1>
-          <p class="sub">
-            A private, offline-first Catholic habit tracker for daily Mass, prayer, Gospel reading,
-            saints, and journaling — built to encourage you without pressure.
-          </p>
+  <main>
+    <section class="hero">
+      <h1>FaithHabit</h1>
+      <p class="subtitle">
+        A quiet, offline-first Catholic habit tracker for daily Mass, prayer, Gospel reading, saints, and journaling.
+        No ads. No tracking. No noise.
+      </p>
 
-          <div class="badges">
-            <div class="badge"><span class="dot"></span> Offline-first</div>
-            <div class="badge"><span class="dot"></span> No subscriptions</div>
-            <div class="badge"><span class="dot"></span> Simple daily rhythm</div>
-            <div class="badge"><span class="dot"></span> Built for peace</div>
-          </div>
-
-          <div class="ctaRow">
-            <a class="btn primary" href="#" onclick="return false;">Download on the App Store (coming soon)</a>
-            <a class="btn" href="#support">Support</a>
-            <a class="btn" href="privacy.html">Privacy Policy</a>
-          </div>
-
-          <div class="smallNote">
-            Note: this page works as your App Store “Marketing URL” or “Support URL” even before launch.
-          </div>
-        </div>
-      </section>
-
-      <aside class="card side">
-        <div class="pad">
-          <h2>What it does</h2>
-          <ul class="featureList">
-            <li>
-              <strong>Daily actions that don’t guilt-trip you</strong>
-              <span>Log Mass, prayer, reading, saint, and journaling with a calm, gentle tone.</span>
-            </li>
-            <li>
-              <strong>A full Bible built into the app</strong>
-              <span>Fast navigation, bookmark favorite passages, and pick up where you left off.</span>
-            </li>
-            <li>
-              <strong>Saint of the Day + daily reflection</strong>
-              <span>Short, grounded inspiration that connects the Gospel to modern life.</span>
-            </li>
-            <li>
-              <strong>Progress that feels like grace</strong>
-              <span>Encouragement, not grinding. Streaks are never “broken.”</span>
-            </li>
-          </ul>
-        </div>
-      </aside>
-    </main>
-
-    <section class="section" id="support" style="margin-top:18px;">
-      <div class="card mini">
-        <div class="pad">
-          <h2>Support</h2>
-          <p>
-            Need help or found a bug? Email:
-            <a href="mailto:support@commonlogix.com">support@commonlogix.com</a>
-          </p>
-          <p style="margin-top:10px;">
-            Include your iOS version, device model, and what you were doing when it happened.
-          </p>
-        </div>
+      <div class="badges">
+        <span class="badge">Offline-first</span>
+        <span class="badge">No subscriptions</span>
+        <span class="badge">Private by default</span>
+        <span class="badge">Daily Gospel + reflection</span>
+        <span class="badge">Saint of the Day</span>
+        <span class="badge">Journal + calm habit flow</span>
       </div>
 
-      <div class="card mini">
-        <div class="pad">
-          <h2>FAQ (quick)</h2>
-          <p><strong>Does it work offline?</strong> Yes — designed to run without internet after install.</p>
-          <p style="margin-top:10px;"><strong>Is there a subscription?</strong> No.</p>
-          <p style="margin-top:10px;"><strong>Does it sell my data?</strong> No — the goal is privacy by default.</p>
-        </div>
+      <div class="cta-row">
+        <!-- Replace the href below with your real App Store link once live -->
+        <a class="btn primary" href="/contact.html">Get Support</a>
+        <a class="btn" href="/privacy.html">Privacy Policy</a>
       </div>
 
-      <div class="card mini">
-        <div class="pad">
-          <h2>For App Store Connect</h2>
-          <p>
-            Use these URLs:
-            <br /><br />
-            <strong>Marketing URL:</strong> https://commonlogix.github.io/faithhabit.html
-            <br />
-            <strong>Support URL:</strong> https://commonlogix.github.io/faithhabit.html#support
-            <br />
-            <strong>Privacy Policy:</strong> https://commonlogix.github.io/privacy.html
-          </p>
-        </div>
+      <p class="note">
+        For App Store Connect: use <strong>https://www.commonlogix.com/faithhabit.html</strong> as your Marketing URL.
+      </p>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>What FaithHabit helps you do</h2>
+        <ul>
+          <li>Log Mass, prayer, Gospel reading, saints, and journaling in seconds</li>
+          <li>Build a simple daily rhythm without guilt or pressure</li>
+          <li>Stay consistent even when life gets chaotic</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Built for privacy</h2>
+        <p>
+          FaithHabit is designed to feel calm and personal. No tracking. No ads. No social feeds.
+          The goal is a quiet tool that helps you show up.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Offline-first</h2>
+        <p>
+          Faith shouldn’t require Wi-Fi. FaithHabit is built to work reliably without internet after install,
+          so your daily habit stays steady wherever you are.
+        </p>
       </div>
     </section>
 
-    <footer>
-      <div>© <span id="y"></span> CommonLogix LLC</div>
-      <div class="legal">
-        <a href="privacy.html">Privacy</a>
-        · <a href="mission.html">Mission</a>
-        · <a href="about.html">About</a>
-      </div>
-    </footer>
-  </div>
+    <section class="support" id="support">
+      <h2>Support</h2>
+      <p>
+        Need help, found a bug, or have a question? Email us at
+        <a href="mailto:info@commonlogix.com">info@commonlogix.com</a>.
+      </p>
+      <p>
+        Include your iPhone model, iOS version, and what you tapped right before the issue.
+      </p>
+    </section>
+  </main>
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Company</h4>
+        <p>CommonLogix LLC<br>iOS App Development<br><a href="mailto:info@commonlogix.com">info@commonlogix.com</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Legal</h4>
+        <p><a href="/privacy.html">Privacy Policy & Terms</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 CommonLogix LLC. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
-
