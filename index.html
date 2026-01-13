@@ -7,12 +7,8 @@
   <title>CommonLogix® | Common Sense Shipping Fast</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
       --bg-dark: #0f0f0f;
@@ -59,19 +55,6 @@
       color: var(--text-white);
     }
 
-    .logo-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--accent-orange);
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      font-size: 20px;
-      color: var(--bg-dark);
-    }
-
     .logo-text {
       font-size: 18px;
       font-weight: 700;
@@ -89,6 +72,7 @@
       font-size: 13px;
       letter-spacing: 0.5px;
       text-transform: uppercase;
+      align-items: center;
     }
 
     .nav-links a {
@@ -99,6 +83,29 @@
 
     .nav-links a:hover {
       color: var(--accent-orange);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent-orange);
+      color: var(--bg-dark);
+      padding: 10px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 0.6px;
+      transition: all 0.25s ease;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .nav-cta:hover {
+      background: var(--accent-orange-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 40px rgba(255, 107, 53, 0.25);
     }
 
     /* HERO SECTION */
@@ -118,11 +125,8 @@
     .hero::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-image: 
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
         radial-gradient(circle at 20% 50%, rgba(255, 107, 53, 0.05) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(255, 107, 53, 0.03) 0%, transparent 50%);
       pointer-events: none;
@@ -154,9 +158,7 @@
       font-family: 'GT America', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    .hero-title-accent {
-      color: var(--accent-orange);
-    }
+    .hero-title-accent { color: var(--accent-orange); }
 
     .hero-subtitle {
       font-size: 16px;
@@ -169,8 +171,15 @@
       font-size: 15px;
       font-style: italic;
       color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 48px;
+      margin-bottom: 28px;
       line-height: 1.6;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
     }
 
     .cta-button {
@@ -197,13 +206,32 @@
       box-shadow: 0 20px 60px rgba(255, 107, 53, 0.3);
     }
 
-    .cta-button:active {
-      transform: scale(0.98);
+    .cta-button:active { transform: scale(0.98); }
+
+    .secondary-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.04);
+      color: var(--text-white);
+      padding: 16px 26px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      border: 1px solid rgba(255, 107, 53, 0.22);
+      transition: all 0.25s ease;
     }
 
-    .arrow {
-      font-size: 18px;
+    .secondary-button:hover {
+      border-color: rgba(255, 107, 53, 0.5);
+      background: rgba(255, 107, 53, 0.08);
+      transform: translateY(-1px);
     }
+
+    .arrow { font-size: 18px; }
 
     /* HERO IMAGE */
     .hero-image {
@@ -220,19 +248,15 @@
       height: auto;
       border: 2px solid rgba(255, 107, 53, 0.3);
       border-radius: 8px;
-      box-shadow: 
+      box-shadow:
         0 30px 80px rgba(0, 0, 0, 0.5),
         inset 0 0 60px rgba(255, 107, 53, 0.1);
       animation: float 6s ease-in-out infinite;
     }
 
     @keyframes float {
-      0%, 100% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-12px);
-      }
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
     }
 
     /* TICKER STRIP */
@@ -252,6 +276,7 @@
     .ticker-content {
       display: flex;
       animation: scroll 20s linear infinite;
+      will-change: transform;
     }
 
     .ticker-item {
@@ -267,16 +292,8 @@
     }
 
     @keyframes scroll {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
-    }
-
-    .ticker-content {
-      will-change: transform;
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
     /* APPS SECTION */
@@ -327,9 +344,7 @@
     .app-card::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--accent-orange), transparent);
       opacity: 0;
@@ -343,9 +358,7 @@
       box-shadow: 0 20px 60px rgba(255, 107, 53, 0.15);
     }
 
-    .app-card:hover::before {
-      opacity: 1;
-    }
+    .app-card:hover::before { opacity: 1; }
 
     .app-icon {
       font-size: 48px;
@@ -377,6 +390,50 @@
       font-weight: 600;
       letter-spacing: 0.5px;
       text-transform: uppercase;
+      margin-right: 10px;
+    }
+
+    .app-actions {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .app-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.04);
+      color: var(--text-white);
+      padding: 10px 14px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      border: 1px solid rgba(255, 107, 53, 0.22);
+      transition: all 0.25s ease;
+    }
+
+    .app-link:hover {
+      border-color: rgba(255, 107, 53, 0.5);
+      background: rgba(255, 107, 53, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .app-link.primary {
+      background: var(--accent-orange);
+      color: var(--bg-dark);
+      border-color: var(--accent-orange);
+    }
+
+    .app-link.primary:hover {
+      background: var(--accent-orange-dark);
+      border-color: var(--accent-orange-dark);
     }
 
     /* FOOTER */
@@ -387,10 +444,7 @@
       text-align: center;
     }
 
-    .footer-content {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
+    .footer-content { max-width: 1400px; margin: 0 auto; }
 
     .footer-tagline {
       font-size: 18px;
@@ -417,9 +471,7 @@
       text-transform: uppercase;
     }
 
-    .social-links a:hover {
-      color: var(--accent-orange);
-    }
+    .social-links a:hover { color: var(--accent-orange); }
 
     .footer-bottom {
       color: rgba(255, 255, 255, 0.5);
@@ -440,9 +492,7 @@
       transition: color 0.3s;
     }
 
-    .footer-links a:hover {
-      color: var(--accent-orange);
-    }
+    .footer-links a:hover { color: var(--accent-orange); }
 
     /* RESPONSIVE */
     @media (max-width: 1024px) {
@@ -452,100 +502,38 @@
         gap: 40px;
         min-height: auto;
       }
-
-      .hero-image {
-        order: -1;
-      }
-
-      .hero-title {
-        font-size: clamp(36px, 6vw, 64px);
-      }
-
-      .nav-links {
-        display: none;
-      }
+      .hero-image { order: -1; }
+      .hero-title { font-size: clamp(36px, 6vw, 64px); }
+      .nav-links { display: none; }
     }
 
     @media (max-width: 768px) {
-      header {
-        padding: 12px 20px;
-      }
-
-      .hero {
-        padding: 40px 20px;
-        gap: 30px;
-      }
-
-      .hero-title {
-        font-size: 42px;
-        line-height: 1;
-      }
-
-      .hero-subtitle {
-        font-size: 15px;
-      }
-
-      .ticker-strip {
-        font-size: 14px;
-        padding: 16px 0;
-      }
-
-      .apps-section {
-        padding: 80px 20px;
-      }
-
-      .apps-header h2 {
-        font-size: 36px;
-      }
-
-      .apps-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .app-card {
-        padding: 30px;
-      }
-
-      .cta-button {
-        padding: 16px 36px;
-        font-size: 14px;
-      }
-
-      .social-links {
-        gap: 16px;
-      }
+      header { padding: 12px 20px; }
+      .hero { padding: 40px 20px; gap: 30px; }
+      .hero-title { font-size: 42px; line-height: 1; }
+      .hero-subtitle { font-size: 15px; }
+      .ticker-strip { font-size: 14px; padding: 16px 0; }
+      .apps-section { padding: 80px 20px; }
+      .apps-header h2 { font-size: 36px; }
+      .apps-grid { grid-template-columns: 1fr; }
+      .app-card { padding: 30px; }
+      .cta-button { padding: 16px 36px; font-size: 14px; }
+      .social-links { gap: 16px; }
     }
 
     @media (max-width: 480px) {
-      .hero-title {
-        font-size: 32px;
-      }
-
-      .hero-subtitle {
-        font-size: 14px;
-      }
-
-      .hero-tagline {
-        font-size: 13px;
-      }
-
-      .cta-button {
-        width: 100%;
-        justify-content: center;
-      }
+      .hero-title { font-size: 32px; }
+      .hero-subtitle { font-size: 14px; }
+      .hero-tagline { font-size: 13px; }
+      .cta-button { width: 100%; justify-content: center; }
+      .secondary-button { width: 100%; justify-content: center; }
     }
 
     /* UTILITIES */
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 40px;
-    }
+    .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
 
     @supports (font-family: 'GT America') {
-      .hero-title {
-        font-family: 'GT America', sans-serif;
-      }
+      .hero-title { font-family: 'GT America', sans-serif; }
     }
   </style>
 </head>
@@ -555,14 +543,14 @@
     <div class="header-content">
       <a href="index.html" class="logo-container">
         <img src="logo.png" alt="CommonLogix" style="width: 40px; height: 40px; border-radius: 4px;">
-        <div class="logo-text">
-          CommonLogix<span class="reg">®</span>
-        </div>
+        <div class="logo-text">CommonLogix<span class="reg">®</span></div>
       </a>
       <nav class="nav-links">
         <a href="#apps">Apps</a>
+        <a href="faithhabit.html">FaithHabit</a>
         <a href="mission.html">Mission</a>
         <a href="#contact">Contact</a>
+        <a class="nav-cta" href="faithhabit.html">FaithHabit Live →</a>
       </nav>
     </div>
   </header>
@@ -582,10 +570,17 @@
       <p class="hero-tagline">
         Common sense isn't so common. Good thing I brought extra.
       </p>
-      <a href="#apps" class="cta-button">
-        Enter Mission Control
-        <span class="arrow">→</span>
-      </a>
+
+      <div class="hero-actions">
+        <a href="#apps" class="cta-button">
+          Enter Mission Control
+          <span class="arrow">→</span>
+        </a>
+        <a href="faithhabit.html" class="secondary-button">
+          FaithHabit Landing Page
+          <span class="arrow">→</span>
+        </a>
+      </div>
     </div>
 
     <div class="hero-image">
@@ -609,16 +604,26 @@
   <section class="apps-section" id="apps">
     <div class="apps-header">
       <h2>The Arsenal</h2>
-      <p>Three apps. One vision. Zero committees.</p>
+      <p>Shipping sanity. One dev. No committees.</p>
     </div>
 
     <div class="apps-grid">
-      <!-- Sunday -->
+      <!-- FaithHabit (LIVE) -->
       <div class="app-card">
-        <div class="app-icon">📿</div>
-        <h3>SundayMass</h3>
-        <p>A simple, beautiful way to stay rooted in your faith practice. Built for rhythm, reflection, and quiet consistency.</p>
-        <span class="app-status">Coming 2026</span>
+        <div class="app-icon">✝️</div>
+        <h3>FaithHabit</h3>
+        <p>
+          A private, offline-first Catholic habit tracker for Mass, prayer, daily Gospel + reflection, saints, and journaling.
+          Calm progress. No pressure. No subscriptions.
+        </p>
+        <span class="app-status">Live</span>
+
+        <div class="app-actions">
+          <a class="app-link primary" href="faithhabit.html">View Landing Page →</a>
+          <!-- Replace the href below with your real App Store URL when you have it -->
+          <a class="app-link" href="faithhabit.html#download">App Store →</a>
+          <a class="app-link" href="privacy.html">Privacy →</a>
+        </div>
       </div>
 
       <!-- DadQuest -->
@@ -651,7 +656,7 @@
         <a href="mailto:info@commonlogix.com">Email</a>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 CommonLogix LLC. Shipping sanity, one app at a time.</p>
+        <p>&copy; 2026 CommonLogix LLC. Shipping sanity, one app at a time.</p>
         <div class="footer-links">
           <a href="privacy.html">Privacy Policy</a>
         </div>
