@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="FaithHabit — a private, offline-first Catholic habit tracker for Mass, prayer, Gospel reading, saints, and journaling. No subscriptions.">
-  <title>FaithHabit® | CommonLogix</title>
-
+  <meta name="description" content="FaithHabit — a private, offline-first Catholic habit tracker for Mass, prayer, daily Gospel + reflection, saints, and journaling. Calm progress. No pressure. No subscriptions.">
+  <title>FaithHabit | CommonLogix</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 
@@ -16,70 +15,81 @@
       --bg-darker: #0a0a0a;
       --text-white: #ffffff;
       --text-light: #e8e8e8;
+      --muted: rgba(255,255,255,0.72);
+      --muted-2: rgba(255,255,255,0.55);
       --accent-orange: #ff6b35;
       --accent-orange-dark: #e55a2b;
+      --card: rgba(255,255,255,0.03);
+      --card-border: rgba(255,107,53,0.22);
+      --card-border-strong: rgba(255,107,53,0.45);
     }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
-      background: var(--bg-dark);
+      background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
       color: var(--text-white);
       overflow-x: hidden;
     }
 
+    /* HEADER */
     header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      background: rgba(15, 15, 15, 0.95);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(15, 15, 15, 0.92);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      z-index: 1000;
-      padding: 16px 32px;
+      padding: 16px 24px;
     }
 
     .header-content {
-      max-width: 1600px;
+      max-width: 1120px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 16px;
     }
 
     .logo-container {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 12px;
       text-decoration: none;
       color: var(--text-white);
     }
 
+    .logo-container img {
+      width: 40px;
+      height: 40px;
+      border-radius: 6px;
+    }
+
     .logo-text {
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
     }
 
-    .logo-text .reg {
-      font-size: 10px;
-      vertical-align: super;
-    }
-
-    .nav-links {
+    nav {
       display: flex;
-      gap: 32px;
-      font-size: 13px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
+      gap: 18px;
       align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
-    .nav-links a {
+    nav a {
       color: var(--text-light);
       text-decoration: none;
-      transition: color 0.3s;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      transition: color 0.25s ease;
     }
 
-    .nav-links a:hover { color: var(--accent-orange); }
+    nav a:hover { color: var(--accent-orange); }
 
     .nav-cta {
       display: inline-flex;
@@ -87,28 +97,52 @@
       gap: 10px;
       background: var(--accent-orange);
       color: var(--bg-dark);
-      padding: 10px 16px;
+      padding: 10px 14px;
       border-radius: 999px;
       text-decoration: none;
-      font-weight: 800;
+      font-weight: 900;
       font-size: 12px;
       letter-spacing: 0.6px;
-      transition: all 0.25s ease;
       text-transform: uppercase;
       border: 1px solid rgba(255,255,255,0.12);
+      transition: all 0.25s ease;
+      white-space: nowrap;
     }
 
     .nav-cta:hover {
       background: var(--accent-orange-dark);
       transform: translateY(-1px);
-      box-shadow: 0 14px 40px rgba(255, 107, 53, 0.25);
+      box-shadow: 0 14px 40px rgba(255, 107, 53, 0.22);
     }
 
+    /* LAYOUT */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section {
+      padding: 70px 0;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 820px;
+    }
+
+    /* HERO */
     .hero {
-      margin-top: 64px;
-      min-height: 100vh;
-      background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
-      padding: 80px 40px 60px;
+      padding: 72px 0 36px;
       position: relative;
       overflow: hidden;
     }
@@ -116,98 +150,98 @@
     .hero::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
+      inset: 0;
       background-image:
-        radial-gradient(circle at 20% 30%, rgba(255, 107, 53, 0.06) 0%, transparent 52%),
-        radial-gradient(circle at 80% 80%, rgba(255, 107, 53, 0.035) 0%, transparent 55%);
+        radial-gradient(circle at 20% 25%, rgba(255, 107, 53, 0.08) 0%, transparent 55%),
+        radial-gradient(circle at 80% 70%, rgba(255, 107, 53, 0.05) 0%, transparent 55%);
       pointer-events: none;
-      z-index: 0;
     }
 
-    .wrap {
-      max-width: 1200px;
-      margin: 0 auto;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 34px;
+      align-items: center;
       position: relative;
       z-index: 1;
     }
 
-    .eyebrow {
-      font-size: 14px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--accent-orange);
-      margin-bottom: 22px;
-      font-weight: 700;
-    }
-
-    h1 {
-      font-size: clamp(44px, 7vw, 84px);
-      font-weight: 900;
-      line-height: 0.95;
-      letter-spacing: -2px;
-      margin-bottom: 22px;
-    }
-
-    .accent { color: var(--accent-orange); }
-
-    .sub {
-      font-size: 16px;
-      line-height: 1.8;
-      color: var(--text-light);
-      max-width: 820px;
-      margin-bottom: 24px;
-    }
-
-    .pill-row {
+    .badge-row {
       display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 18px;
       flex-wrap: wrap;
-      gap: 12px;
-      margin: 18px 0 30px;
     }
 
-    .pill {
+    .badge {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 10px 14px;
+      padding: 9px 14px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255, 107, 53, 0.22);
       font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.6px;
+      font-weight: 900;
+      letter-spacing: 0.7px;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.92);
+      background: rgba(255,107,53,0.16);
+      border: 1px solid var(--card-border);
+      color: var(--accent-orange);
     }
 
-    .cta-row {
+    .hero h1 {
+      font-size: clamp(40px, 6vw, 64px);
+      font-weight: 950;
+      line-height: 1.02;
+      letter-spacing: -1.5px;
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      color: var(--text-light);
+      font-size: 16px;
+      line-height: 1.75;
+      margin-bottom: 22px;
+      max-width: 760px;
+    }
+
+    .hero-trust {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+      margin-top: 10px;
+    }
+
+    .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 6px;
+      gap: 12px;
+      margin-top: 14px;
       align-items: center;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      background: rgba(255,255,255,0.04);
-      color: var(--text-white);
-      padding: 16px 26px;
-      border-radius: 50px;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: 999px;
       text-decoration: none;
       font-weight: 900;
-      font-size: 13px;
-      letter-spacing: 0.6px;
+      font-size: 12px;
+      letter-spacing: 0.7px;
       text-transform: uppercase;
-      border: 1px solid rgba(255, 107, 53, 0.22);
       transition: all 0.25s ease;
+      border: 1px solid var(--card-border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text-white);
+      white-space: nowrap;
     }
 
     .btn:hover {
-      border-color: rgba(255, 107, 53, 0.5);
-      background: rgba(255, 107, 53, 0.08);
+      border-color: var(--card-border-strong);
+      background: rgba(255,107,53,0.08);
       transform: translateY(-1px);
     }
 
@@ -220,198 +254,430 @@
     .btn.primary:hover {
       background: var(--accent-orange-dark);
       border-color: var(--accent-orange-dark);
-      box-shadow: 0 18px 55px rgba(255, 107, 53, 0.25);
+      box-shadow: 0 18px 60px rgba(255,107,53,0.20);
     }
 
-    .grid {
-      margin-top: 56px;
+    .hero-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+    }
+
+    .hero-card-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .app-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background: rgba(255,107,53,0.12);
+      border: 1px solid var(--card-border);
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 22px;
+      place-items: center;
+      font-size: 26px;
     }
 
-    .card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 107, 53, 0.2);
-      border-radius: 12px;
-      padding: 28px;
-      transition: all 0.3s ease;
-    }
-
-    .card:hover {
-      border-color: rgba(255, 107, 53, 0.5);
-      background: rgba(255, 107, 53, 0.05);
-      transform: translateY(-4px);
-      box-shadow: 0 18px 50px rgba(255, 107, 53, 0.12);
-    }
-
-    .card h2 {
+    .app-meta h2 {
       font-size: 18px;
       font-weight: 900;
-      margin-bottom: 10px;
+      margin-bottom: 2px;
       letter-spacing: -0.2px;
     }
 
-    .card p, .card li {
-      color: var(--text-light);
+    .app-meta span {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .mini-grid a {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      background: rgba(255,255,255,0.02);
+      display: block;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .mini-grid a:hover {
+      transform: translateY(-2px);
+      border-color: var(--card-border-strong);
+    }
+
+    .mini-grid img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.05) contrast(1.05);
+    }
+
+    /* FEATURES */
+    .feature-grid {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .feature {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .feature h3 {
+      font-size: 14px;
+      font-weight: 950;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      color: var(--muted);
+      font-size: 14px;
       line-height: 1.7;
-      font-size: 15px;
     }
 
-    .card ul { margin-top: 10px; padding-left: 18px; }
-
-    .support {
-      margin-top: 64px;
-      padding-top: 48px;
-      border-top: 1px solid rgba(255,255,255,0.1);
+    /* PREVIEW */
+    .preview-wrap {
+      margin-top: 22px;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 18px;
+      overflow: hidden;
     }
 
-    .support h2 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
-    .support p { color: var(--text-light); line-height: 1.8; margin-top: 8px; }
-    .support a { color: var(--accent-orange); text-decoration: none; font-weight: 800; }
-    .support a:hover { text-decoration: underline; }
+    .preview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: center;
+    }
 
+    .preview-grid p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+      margin-top: 10px;
+    }
+
+    video {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid rgba(255,107,53,0.18);
+      background: rgba(0,0,0,0.35);
+    }
+
+    .note {
+      color: var(--muted-2);
+      font-size: 12px;
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    /* SCREENSHOTS */
+    .shots-grid {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .shot {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .shot:hover {
+      transform: translateY(-3px);
+      border-color: var(--card-border-strong);
+    }
+
+    .shot img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .shot-caption {
+      padding: 12px 12px 14px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* DOWNLOAD */
+    .download-card {
+      margin-top: 22px;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .download-card strong {
+      font-size: 16px;
+      font-weight: 950;
+      letter-spacing: -0.3px;
+    }
+
+    .download-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 6px;
+      line-height: 1.6;
+      max-width: 700px;
+    }
+
+    /* FOOTER */
     footer {
-      background: var(--bg-darker);
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 60px 40px;
+      padding: 56px 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      background: rgba(0,0,0,0.22);
       text-align: center;
     }
 
-    .footer-tagline {
-      font-size: 16px;
-      color: var(--text-light);
-      margin-bottom: 26px;
-      letter-spacing: 0.5px;
-    }
-
-    .footer-bottom {
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 13px;
-      letter-spacing: 0.5px;
-    }
-
     .footer-links {
-      margin-top: 18px;
-      padding-top: 18px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 14px;
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
     .footer-links a {
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 12px;
-      margin: 0 16px;
-      transition: color 0.3s;
+      color: var(--muted);
       text-decoration: none;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
-      font-weight: 700;
+      transition: color 0.2s ease;
     }
 
     .footer-links a:hover { color: var(--accent-orange); }
 
-    @media (max-width: 1024px) { .nav-links { display: none; } }
-    @media (max-width: 768px) { header { padding: 12px 20px; } .hero { padding: 60px 20px 50px; } }
-    @media (max-width: 480px) { .btn { width: 100%; justify-content: center; } }
+    /* RESPONSIVE */
+    @media (max-width: 980px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .mini-grid img { height: 150px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .preview-grid { grid-template-columns: 1fr; }
+      .shots-grid { grid-template-columns: 1fr; }
+      .shot img { height: 520px; }
+      nav { display: none; }
+    }
+
+    @media (max-width: 520px) {
+      header { padding: 14px 16px; }
+      .section { padding: 56px 0; }
+      .hero { padding: 58px 0 26px; }
+      .mini-grid { grid-template-columns: 1fr; }
+      .mini-grid img { height: 200px; }
+      .shot img { height: 460px; }
+      .btn { width: 100%; }
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="header-content">
       <a href="index.html" class="logo-container">
-        <img src="logo.png" alt="CommonLogix" style="width: 40px; height: 40px; border-radius: 4px;">
-        <div class="logo-text">CommonLogix<span class="reg">®</span></div>
+        <img src="logo.png" alt="CommonLogix">
+        <div class="logo-text">CommonLogix®</div>
       </a>
-      <nav class="nav-links">
-        <a href="index.html#apps">Apps</a>
-        <a href="mission.html">Mission</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="index.html#contact">Contact</a>
-        <a class="nav-cta" href="#download">Download →</a>
+      <nav>
+        <a href="#preview">Preview</a>
+        <a href="#screens">Screens</a>
+        <a href="#download">App Store</a>
+        <a class="nav-cta" href="#download">Get FaithHabit →</a>
       </nav>
     </div>
   </header>
 
-  <section class="hero">
-    <div class="wrap">
-      <div class="eyebrow">FaithHabit® by CommonLogix</div>
-      <h1>
-        FAITH, BUT <span class="accent">CALM.</span><br>
-        HABITS, BUT <span class="accent">PRIVATE.</span>
-      </h1>
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="badge-row">
+            <div class="badge">Live</div>
+            <div class="badge">Offline-First</div>
+            <div class="badge">No Subscriptions</div>
+          </div>
 
-      <p class="sub">
-        FaithHabit is a private, offline-first Catholic habit tracker for Mass, prayer, daily Gospel + reflection,
-        saints, and journaling. No subscriptions. No tracking. No noise.
-      </p>
-
-      <div class="pill-row">
-        <div class="pill">Offline-First</div>
-        <div class="pill">No Subscriptions</div>
-        <div class="pill">Daily Gospel + Reflection</div>
-        <div class="pill">Saint of the Day</div>
-        <div class="pill">Journal</div>
-        <div class="pill">Calm Progress</div>
-      </div>
-
-      <div class="cta-row" id="download">
-        <!-- Replace this href with your real App Store URL when you have it -->
-        <a class="btn primary" href="index.html#apps">App Store (link coming) →</a>
-        <a class="btn" href="#support">Support →</a>
-        <a class="btn" href="privacy.html">Privacy →</a>
-      </div>
-
-      <div class="grid">
-        <div class="card">
-          <h2>What it does</h2>
-          <p>Track the basics without turning faith into a grind.</p>
-          <ul>
-            <li>Log Mass, prayer, reading, saint, and journaling in seconds</li>
-            <li>Daily Gospel + reflection that stays grounded and modern</li>
-            <li>Gentle consistency — no shame language, no “broken streak” nonsense</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h2>Private by default</h2>
+          <h1>FaithHabit</h1>
           <p>
-            Built to respect your life and your attention. No ads. No tracking. No social feeds.
-            It’s a tool, not a slot machine.
+            A private, offline-first Catholic habit tracker for Mass, prayer, daily Gospel + reflection, saints, and journaling.
+            Calm progress. No pressure. No subscriptions.
           </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#download">App Store →</a>
+            <a class="btn" href="#preview">Watch Preview →</a>
+            <a class="btn" href="#screens">See Screens →</a>
+          </div>
+
+          <div class="hero-trust">
+            Private by default. No tracking. Works offline after install. Designed to feel calm — not gamified pressure.
+          </div>
         </div>
 
-        <div class="card">
-          <h2>Offline-first</h2>
-          <p>
-            Your faith rhythm shouldn’t depend on a signal. FaithHabit is designed to work reliably after install,
-            even when you’re offline.
-          </p>
-        </div>
+        <aside class="hero-card" aria-label="FaithHabit highlights">
+          <div class="hero-card-top">
+            <div class="app-icon">✝️</div>
+            <div class="app-meta">
+              <h2>FaithHabit</h2>
+              <span>Mass • Prayer • Gospel • Saints • Journal</span>
+            </div>
+          </div>
+
+          <div class="mini-grid">
+            <a href="#screens"><img src="faithhabit-1.png" alt="FaithHabit screenshot 1" loading="lazy"></a>
+            <a href="#screens"><img src="faithhabit-2.png" alt="FaithHabit screenshot 2" loading="lazy"></a>
+            <a href="#screens"><img src="faithhabit-3.png" alt="FaithHabit screenshot 3" loading="lazy"></a>
+          </div>
+
+          <div class="note">Tip: Tap “See Screens” below to view full-size previews.</div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section" id="features">
+      <div class="section-title">What it does</div>
+      <div class="section-subtitle">
+        The goal isn’t “more productivity.” It’s a calmer rhythm: show up, log it, and watch quiet progress build.
       </div>
 
-      <div class="support" id="support">
-        <h2>Support</h2>
-        <p>
-          Email: <a href="mailto:info@commonlogix.com">info@commonlogix.com</a>
-        </p>
-        <p>
-          Include your device model, iOS version, and what you tapped right before the issue.
-        </p>
-        <p>
-          Privacy Policy: <a href="privacy.html">privacy.html</a>
-        </p>
+      <div class="feature-grid">
+        <div class="feature">
+          <h3>Offline-first</h3>
+          <p>Everything is designed to work without a constant internet connection. Your practice stays yours.</p>
+        </div>
+        <div class="feature">
+          <h3>Daily Gospel + reflection</h3>
+          <p>Read the day’s Gospel, reflect, and move on. No doomscrolling. No pressure. Just truth.</p>
+        </div>
+        <div class="feature">
+          <h3>Simple habit log</h3>
+          <p>Mass, prayer, saints, journaling — tracked with calm clarity. No subscriptions, no ads, no noise.</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- PREVIEW -->
+    <section class="section" id="preview">
+      <div class="section-title">Preview</div>
+      <div class="section-subtitle">
+        A quick look at the vibe and flow. Keep it simple. Keep it calm.
+      </div>
+
+      <div class="preview-wrap">
+        <div class="preview-grid">
+          <div>
+            <div style="font-weight:950;letter-spacing:-0.4px;font-size:16px;">App preview video</div>
+            <p>
+              If you’ve uploaded <strong>faithhabit-preview.mp4</strong> to this repo, it will play here.
+              If not, upload it later — this section is already wired.
+            </p>
+            <div class="note">
+              Recommended: H.264 MP4, 15–30 seconds, under ~30–50MB for fast loading on mobile.
+            </div>
+          </div>
+
+          <div>
+            <video controls playsinline preload="metadata" poster="faithhabit-1.png">
+              <source src="faithhabit-preview.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREENSHOTS -->
+    <section class="section" id="screens">
+      <div class="section-title">Screens</div>
+      <div class="section-subtitle">
+        A few core screens — designed to feel quiet, focused, and “offline by default.”
+      </div>
+
+      <div class="shots-grid">
+        <div class="shot">
+          <img src="faithhabit-1.png" alt="FaithHabit screenshot 1" loading="lazy">
+          <div class="shot-caption">Home: today’s progress, calm visuals, and quick actions.</div>
+        </div>
+        <div class="shot">
+          <img src="faithhabit-2.png" alt="FaithHabit screenshot 2" loading="lazy">
+          <div class="shot-caption">Scripture + reflection: read, reflect, done. No noise.</div>
+        </div>
+        <div class="shot">
+          <img src="faithhabit-3.png" alt="FaithHabit screenshot 3" loading="lazy">
+          <div class="shot-caption">Saints + journaling: practical faith, daily consistency.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOWNLOAD -->
+    <section class="section" id="download">
+      <div class="section-title">Get FaithHabit</div>
+      <div class="section-subtitle">
+        Available on the App Store. Built to be private, offline-first, and calm.
+      </div>
+
+      <div class="download-card">
+        <div>
+          <strong>Download on the App Store</strong>
+          <span>
+            Replace the placeholder link with your real App Store URL when ready.
+            Privacy Policy is available in the footer.
+          </span>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a class="btn primary" href="APP_STORE_URL_HERE" target="_blank" rel="noopener">App Store →</a>
+          <a class="btn" href="index.html">Back to CommonLogix →</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <p class="footer-tagline">Old school common sense. Modern execution. Built with intent. Crafted with care.</p>
-    <div class="footer-bottom">
-      <p>&copy; 2025 CommonLogix LLC. Shipping sanity, one app at a time.</p>
+    <div class="container">
+      <div style="color:rgba(255,255,255,0.7);font-size:13px;line-height:1.7;">
+        © 2026 CommonLogix LLC. Built with calm intent.
+      </div>
       <div class="footer-links">
-        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy Policy</a>
         <a href="mission.html">Mission</a>
-        <a href="privacy.html">Privacy</a>
         <a href="index.html#contact">Contact</a>
       </div>
     </div>
