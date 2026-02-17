@@ -55,40 +55,17 @@
       color: var(--text-white);
     }
 
-    .logo-text {
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
+    .logo-text { font-size: 18px; font-weight: 700; }
 
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      font-size: 13px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      align-items: center;
-    }
-
-    .nav-links a {
-      color: var(--text-light);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
+    .nav-links { display: flex; gap: 32px; font-size: 13px; text-transform: uppercase; }
+    .nav-links a { color: var(--text-light); text-decoration: none; }
 
     /* HERO */
     .hero {
-      padding: 160px 40px 80px;
+      padding: 160px 40px 60px;
       background: linear-gradient(180deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      max-width: 1400px;
-      margin: 0 auto;
-      gap: 60px;
+      text-align: center;
     }
-
-    .hero-content { text-align: left; }
 
     .hero-eyebrow {
       font-family: 'Space Mono', monospace;
@@ -100,24 +77,16 @@
     }
 
     .hero-title {
-      font-size: clamp(40px, 6vw, 72px);
+      font-size: clamp(40px, 8vw, 72px);
       font-weight: 900;
       line-height: 1;
-      letter-spacing: -2px;
       margin-bottom: 24px;
     }
 
-    .hero-subtitle {
-      font-size: 18px;
-      color: var(--text-light);
-      margin-bottom: 40px;
-    }
-
-    .hero-image img {
-      width: 100%;
-      border-radius: 20px;
-      border: 1px solid rgba(255, 107, 53, 0.3);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    .hero-icon {
+      width: 80px;
+      margin-bottom: 24px;
+      filter: drop-shadow(0 0 10px rgba(255, 107, 53, 0.3));
     }
 
     .btn-primary {
@@ -133,136 +102,52 @@
       transition: all 0.3s ease;
     }
 
-    .btn-primary:hover {
-      background: var(--accent-orange-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
-    }
-
-    .trust-badge {
-      margin-top: 32px;
-      font-family: 'Space Mono', monospace;
-      font-size: 12px;
-      color: var(--accent-blue);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    /* SCREENSHOT STRIP */
-    .screenshot-strip {
-      padding: 60px 40px;
-      background: var(--bg-darker);
-      border-top: 1px solid rgba(255,255,255,0.05);
+    /* PROTECTED SCREENSHOTS */
+    .screenshot-section {
+      padding: 40px 20px;
+      background: var(--bg-dark);
     }
 
     .screen-grid {
-      max-width: 1200px;
+      max-width: 1100px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      justify-items: center;
     }
 
-    .screen-grid img {
+    .phone-frame {
       width: 100%;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: transform 0.3s ease;
+      max-width: 220px; /* Kept small as requested */
+      border: 6px solid #1a1a1a;
+      border-radius: 30px;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
     }
 
-    .screen-grid img:hover { transform: scale(1.02); }
+    .phone-frame img {
+      width: 100%;
+      display: block;
+    }
 
     /* FEATURE GRID */
-    .features {
-      padding: 100px 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+    .features { padding: 80px 40px; max-width: 1200px; margin: 0 auto; }
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .feature-card { background: rgba(255, 255, 255, 0.02); padding: 30px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05); }
+    .feature-card h3 { color: var(--accent-blue); margin-bottom: 10px; font-size: 18px; }
+    .feature-card p { font-size: 14px; color: var(--text-light); }
 
-    .section-title {
-      font-size: 42px;
-      font-weight: 900;
-      margin-bottom: 48px;
-      text-align: center;
-      letter-spacing: -1px;
-    }
+    /* MISSION */
+    .mission { background: rgba(74, 189, 227, 0.03); padding: 80px 40px; text-align: center; }
+    .mission-content { max-width: 750px; margin: 0 auto; }
 
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-    }
-
-    .feature-card {
-      background: rgba(255, 255, 255, 0.03);
-      padding: 32px;
-      border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .feature-card h3 {
-      font-size: 20px;
-      margin-bottom: 12px;
-      color: var(--accent-blue);
-    }
-
-    .feature-card p {
-      font-size: 15px;
-      color: var(--text-light);
-    }
-
-    /* MISSION BOX */
-    .mission {
-      background: rgba(74, 189, 227, 0.05);
-      border-top: 1px solid rgba(74, 189, 227, 0.2);
-      border-bottom: 1px solid rgba(74, 189, 227, 0.2);
-      padding: 80px 40px;
-      text-align: center;
-    }
-
-    .mission-content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .mission-title {
-      font-size: 28px;
-      font-weight: 800;
-      margin-bottom: 24px;
-    }
-
-    .mission-text {
-      font-size: 16px;
-      color: var(--text-light);
-      margin-bottom: 20px;
-    }
-
-    /* FOOTER */
-    footer {
-      padding: 80px 40px;
-      text-align: center;
-      background: var(--bg-darker);
-    }
-
-    .footer-links a {
-      color: rgba(255, 255, 255, 0.5);
-      text-decoration: none;
-      margin: 0 16px;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    @media (max-width: 1024px) {
-      .hero { grid-template-columns: 1fr; text-align: center; padding-top: 120px; }
-      .hero-content { text-align: center; }
-      .hero-image { order: -1; max-width: 500px; margin: 0 auto; }
-    }
+    footer { padding: 60px 40px; text-align: center; font-size: 12px; color: rgba(255,255,255,0.3); }
 
     @media (max-width: 768px) {
-      .hero-title { font-size: 40px; }
-      .screen-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
+      .hero-title { font-size: 36px; }
+      .screen-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -271,110 +156,58 @@
   <header>
     <div class="header-content">
       <a href="index.html" class="logo-container">
-        <img src="logo.png" alt="CommonLogix" style="width: 32px; height: 32px; border-radius: 4px;">
-        <div class="logo-text">CommonLogix<span style="font-size:10px; vertical-align:super;">®</span></div>
+        <img src="logo.png" alt="CommonLogix" style="width: 32px; height: 32px;">
+        <div class="logo-text">CommonLogix®</div>
       </a>
       <nav class="nav-links">
-        <a href="index.html#apps">Apps</a>
-        <a href="mission.html">Mission</a>
-        <a href="mailto:info@commonlogix.com">Support</a>
+        <a href="index.html#apps">Back to Studio</a>
       </nav>
     </div>
   </header>
 
   <section class="hero">
-    <div class="hero-content">
-      <div class="hero-eyebrow">The Ultimate Companion</div>
-      <h1 class="hero-title">A Sanctuary<br>on Your Phone.</h1>
-      <p class="hero-subtitle">
-        Scripture, Rosary, Daily Liturgy, and deep scholarship. 100% Private. Offline-first. Designed for the serious spiritual journey.
-      </p>
-      <a href="https://apps.apple.com/app/faithhabit/idXXXXXXXXXX" class="btn-primary">Download on App Store</a>
-      <div class="trust-badge">
-        3-Day Free Trial • No Accounts • No Tracking
-      </div>
-    </div>
-    <div class="hero-image">
-      <img src="faithhabit-1.png" alt="FaithHabit Bible Atlas Visual">
-    </div>
+    <img src="Bible.png" alt="Bible Icon" class="hero-icon">
+    <div class="hero-eyebrow">The Ultimate Companion</div>
+    <h1 class="hero-title">FaithHabit: Catholic Companion</h1>
+    <p style="max-width:700px; margin:0 auto 30px; color:var(--text-light);">
+      A complete spiritual engine for your daily journey. 100% Private. Offline-first. No accounts required.
+    </p>
+    <a href="https://apps.apple.com/app/faithhabit/idXXXXXXXXXX" class="btn-primary">Get the Companion</a>
   </section>
 
-  <section class="screenshot-strip">
+  <section class="screenshot-section">
     <div class="screen-grid">
-      <img src="faithhabit-1.png" alt="Bible Atlas Progress Tracking">
-      <img src="faithhabit-2.png" alt="Daily Mass Readings and Liturgy">
-      <img src="faithhabit-3.png" alt="Animated Rosary and Chaplets">
+      <div class="phone-frame"><img src="faithhabit-1a.png" alt="Bible Atlas Progress"></div>
+      <div class="phone-frame"><img src="faithhabit-1.png" alt="Sacred Narrative"></div>
+      <div class="phone-frame"><img src="faithhabit-2a.png" alt="Daily Liturgy"></div>
+      <div class="phone-frame"><img src="faithhabit-3a.png" alt="Animated Rosary"></div>
+      <div class="phone-frame"><img src="faithhabit-4a.png" alt="Spiritual Journal"></div>
     </div>
   </section>
 
   <section class="features">
-    <h2 class="section-title">The Spiritual Engine</h2>
     <div class="feature-grid">
-      <div class="feature-card">
-        <h3>Bible Atlas</h3>
-        <p>A breakthrough visual map of your progress. Light up every chapter as you journey through all 73 books of the Catholic canon.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Daily Liturgy</h3>
-        <p>Access the complete Daily Mass readings (First Reading, Psalm, Second Reading, and Gospel) 100% offline.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Traditional Devotions</h3>
-        <p>Guided Animated Rosary, Stations of the Cross, and 7 powerful Chaplets (Divine Mercy, St. Michael, and more).</p>
-      </div>
-      <div class="feature-card">
-        <h3>Deep Scholarship</h3>
-        <p>Study the Gospels with the Catena Aurea (St. Thomas Aquinas) and Haydock commentaries alongside the text.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Saint Library</h3>
-        <p>Insights into 300+ holy lives, including the Saint of the Day and summaries of their spiritual legacy.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Novena Tracker</h3>
-        <p>Organize your intercessory life with a library of 100+ traditional Novenas and progress tracking.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Sacred Narrative</h3>
-        <p>Experience the Bible as a cohesive story through 300+ immersive scenes from Creation to the Passion.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Catholic Dictionary</h3>
-        <p>Search 4,900+ Catholic terms with scholarly definitions and deep, expandable entries.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Spiritual Journal</h3>
-        <p>A private Daily Examen and reflection log stored entirely on your device. Your interior life stays yours.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Faith Garden</h3>
-        <p>Watch your consistency bloom with living analytics that track your growth and consistency over time.</p>
-      </div>
+      <div class="feature-card"><h3>Bible Atlas</h3><p>Visual map of your progress through all 73 books. Every chapter lights up as you read.</p></div>
+      <div class="feature-card"><h3>Daily Liturgy</h3><p>The complete Daily Mass readings (First Reading, Psalm, Gospel) available entirely offline.</p></div>
+      <div class="feature-card"><h3>Devotions</h3><p>Guided Rosary, Stations of the Cross, and 7 Chaplets with intuitive animation.</p></div>
+      <div class="feature-card"><h3>Scholarship</h3><p>Study with the Catena Aurea and Haydock commentaries alongside the text.</p></div>
+      <div class="feature-card"><h3>Saint Library</h3><p>Insights into 300+ holy lives, including the Saint of the Day and spiritual legacies.</p></div>
+      <div class="feature-card"><h3>Dictionary</h3><p>Search 4,900+ Catholic terms with scholarly definitions and expandable entries.</p></div>
     </div>
   </section>
 
   <section class="mission">
     <div class="mission-content">
-      <h2 class="mission-title">Why is FaithHabit so affordable?</h2>
-      <p class="mission-text">
-        We believe prayer should never be a luxury. FaithHabit is intentionally priced low so anyone can grow deeper in their faith, no matter their budget.
-      </p>
-      <p class="mission-text">
-        We don’t run ads, and we don’t sell your data. Your privacy matters to us. Your subscription helps us cover our costs and keep the app simple, private, and focused on helping you pray consistently and return to the sacraments.
-      </p>
+      <img src="Cross.png" alt="Cross" style="width:40px; margin-bottom:20px;">
+      <h2 style="margin-bottom:20px;">Why is FaithHabit so affordable?</h2>
+      <p style="margin-bottom:20px; font-size:15px;">We believe prayer should never be a luxury. Intentionally priced low so anyone can grow deeper in their faith, no matter their budget.</p>
+      <p style="font-size:15px;">Your subscription helps us stay private and focused on what matters: helping you return to the sacraments and filling your cup with Christ's love.</p>
       <p style="font-weight: 800; color: var(--accent-orange); margin-top: 24px; font-size: 18px;">God Bless 🙏</p>
     </div>
   </section>
 
   <footer>
-    <div class="footer-links">
-      <a href="privacy.html">Privacy</a>
-      <a href="terms.html">Terms</a>
-      <a href="mailto:info@commonlogix.com">Support</a>
-    </div>
-    <p style="margin-top: 32px; font-size: 12px; color: rgba(255,255,255,0.3); font-family: 'Space Mono', monospace;">
-      © 2026 COMMONLOGIX LLC. SHIPPING SANITY SINCE 2025.
-    </p>
+    &copy; 2026 COMMONLOGIX LLC. SHIPPING SANITY SINCE 2025.
   </footer>
 
 </body>
