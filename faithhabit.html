@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="FaithHabit — a private, offline-first Catholic habit tracker. Calm progress. Free with optional Pro features.">
-  <title>FaithHabit | CommonLogix</title>
+  <meta name="description" content="FaithHabit: The Ultimate Catholic Companion. 100% Private, Offline Bible, Rosary, and Daily Liturgy.">
+  <title>FaithHabit | The Ultimate Catholic Companion</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 
@@ -15,259 +15,366 @@
       --bg-darker: #0a0a0a;
       --text-white: #ffffff;
       --text-light: #e8e8e8;
-      --muted: rgba(255,255,255,0.72);
       --accent-orange: #ff6b35;
       --accent-orange-dark: #e55a2b;
-      --card: rgba(255,255,255,0.03);
-      --card-border: rgba(255,107,53,0.22);
+      --accent-blue: #4ABDE3;
     }
-
-    html { scroll-behavior: smooth; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
       background: var(--bg-dark);
       color: var(--text-white);
-      user-select: none;
-      -webkit-user-select: none;
+      overflow-x: hidden;
+      line-height: 1.6;
     }
 
     /* HEADER */
     header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(15, 15, 15, 0.92);
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(15, 15, 15, 0.95);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 16px 24px;
+      z-index: 1000;
+      padding: 16px 32px;
     }
 
     .header-content {
-      max-width: 1120px;
+      max-width: 1600px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
     }
 
     .logo-container {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       gap: 12px;
       text-decoration: none;
       color: var(--text-white);
     }
 
-    .logo-container img { width: 40px; height: 40px; border-radius: 6px; }
-    .logo-text { font-size: 16px; font-weight: 800; letter-spacing: 0.3px; }
-
-    nav { display: flex; gap: 18px; align-items: center; }
-    nav a {
-      color: var(--text-light);
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
-    }
-
-    .nav-cta {
-      background: var(--accent-orange);
-      color: var(--bg-dark);
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-weight: 900;
-      font-size: 11px;
-      text-decoration: none;
-    }
-
-    /* LAYOUT */
-    .container { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
-    .section { padding: 60px 0; }
-    .section-title { font-size: 32px; font-weight: 900; margin-bottom: 10px; }
-    .section-subtitle { color: var(--muted); margin-bottom: 40px; line-height: 1.6; }
-
-    /* 🛡️ THEFT-PROOF IMAGE SYSTEM */
-    .shots-grid { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-      gap: 24px; 
-    }
-
-    .shot-card {
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .protected-image {
-      width: 100%;
-      height: 520px;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-color: #000;
-      pointer-events: none;
-    }
-
-    .shot-caption { 
-      padding: 20px; 
-      font-size: 13px; 
-      color: var(--muted); 
-      line-height: 1.6; 
-      border-top: 1px solid var(--card-border);
-      background: rgba(255,255,255,0.01);
-    }
-
-    .shot-caption strong {
-      color: var(--accent-orange);
-      display: block;
-      margin-bottom: 4px;
-      text-transform: uppercase;
-      font-size: 11px;
+    .logo-text {
+      font-size: 18px;
+      font-weight: 700;
       letter-spacing: 0.5px;
     }
 
-    /* BUTTONS */
-    .btn {
-      display: inline-flex;
-      padding: 14px 24px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 900;
-      font-size: 12px;
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      font-size: 13px;
+      letter-spacing: 0.5px;
       text-transform: uppercase;
-      border: 1px solid var(--card-border);
-      background: rgba(255,255,255,0.04);
-      color: var(--text-white);
+      align-items: center;
     }
-    .btn.primary { background: var(--accent-orange); color: var(--bg-dark); }
 
-    footer { padding: 60px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.3); }
-    .footer-links { margin-top: 20px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-    .footer-links a { color: var(--muted); text-decoration: none; font-size: 12px; font-weight: 800; text-transform: uppercase; }
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
 
-    @media (max-width: 900px) {
-      .shots-grid { grid-template-columns: 1fr; }
+    /* HERO */
+    .hero {
+      padding: 160px 40px 80px;
+      background: linear-gradient(180deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+      gap: 60px;
+    }
+
+    .hero-content { text-align: left; }
+
+    .hero-eyebrow {
+      font-family: 'Space Mono', monospace;
+      color: var(--accent-orange);
+      font-size: 14px;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: var(--text-light);
+      margin-bottom: 40px;
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 107, 53, 0.3);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 18px 36px;
+      background: var(--accent-orange);
+      color: var(--bg-dark);
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-orange-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+    }
+
+    .trust-badge {
+      margin-top: 32px;
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* SCREENSHOT STRIP */
+    .screenshot-strip {
+      padding: 60px 40px;
+      background: var(--bg-darker);
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .screen-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .screen-grid img {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .screen-grid img:hover { transform: scale(1.02); }
+
+    /* FEATURE GRID */
+    .features {
+      padding: 100px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 42px;
+      font-weight: 900;
+      margin-bottom: 48px;
+      text-align: center;
+      letter-spacing: -1px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 32px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .feature-card h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: var(--accent-blue);
+    }
+
+    .feature-card p {
+      font-size: 15px;
+      color: var(--text-light);
+    }
+
+    /* MISSION BOX */
+    .mission {
+      background: rgba(74, 189, 227, 0.05);
+      border-top: 1px solid rgba(74, 189, 227, 0.2);
+      border-bottom: 1px solid rgba(74, 189, 227, 0.2);
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    .mission-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .mission-title {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 24px;
+    }
+
+    .mission-text {
+      font-size: 16px;
+      color: var(--text-light);
+      margin-bottom: 20px;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 80px 40px;
+      text-align: center;
+      background: var(--bg-darker);
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      margin: 0 16px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; text-align: center; padding-top: 120px; }
+      .hero-content { text-align: center; }
+      .hero-image { order: -1; max-width: 500px; margin: 0 auto; }
+    }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 40px; }
+      .screen-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
     }
   </style>
 </head>
-<body oncontextmenu="return false;">
+<body>
 
   <header>
     <div class="header-content">
       <a href="index.html" class="logo-container">
-        <img src="logo.png" alt="CommonLogix Logo">
-        <div class="logo-text">CommonLogix®</div>
+        <img src="logo.png" alt="CommonLogix" style="width: 32px; height: 32px; border-radius: 4px;">
+        <div class="logo-text">CommonLogix<span style="font-size:10px; vertical-align:super;">®</span></div>
       </a>
-      <nav>
-        <a href="#screens">Screens</a>
-        <a class="nav-cta" href="#download">Get FaithHabit</a>
+      <nav class="nav-links">
+        <a href="index.html#apps">Apps</a>
+        <a href="mission.html">Mission</a>
+        <a href="mailto:info@commonlogix.com">Support</a>
       </nav>
     </div>
   </header>
 
-  <main class="container">
-    <section class="section hero">
-      <div style="text-align: center; max-width: 800px; margin: 0 auto;">
-        <div style="display: inline-block; padding: 8px 12px; border-radius: 999px; font-size: 11px; font-weight: 900; background: rgba(255,107,53,0.1); color: var(--accent-orange); border: 1px solid var(--card-border); margin-bottom: 20px;">
-          FaithHabit Pro • 3-Day Trial Available
-        </div>
-        <h1 style="font-size: clamp(48px, 8vw, 72px); line-height: 1; margin-bottom: 20px;">FaithHabit</h1>
-        <p style="font-size: 18px; color: var(--text-light); margin-bottom: 30px; line-height: 1.6;">
-          A private, offline-first Catholic habit tracker. Build a calm daily rhythm with the 
-          daily Gospel, Catholic library, and personal logs.
-        </p>
-        <div style="display: flex; gap: 15px; justify-content: center;">
-          <a href="#download" class="btn primary">App Store →</a>
-          <a href="#screens" class="btn">View Screens</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="screens">
-      <div class="section-title">Experience the Design</div>
-      <div class="section-subtitle">A focused look at the 2026 release version.</div>
-
-      <div class="shots-grid">
-        <div class="shot-card">
-          <div class="protected-image" style="background-image: url('faithhabit-1a.png');"></div>
-          <div class="shot-caption">
-            <strong>The Home Screen</strong>
-            Your daily dashboard. Track Mass attendance, prayer sessions, and journal entries at a glance.
-          </div>
-        </div>
-
-        <div class="shot-card">
-          <div class="protected-image" style="background-image: url('faithhabit-2a.png');"></div>
-          <div class="shot-caption">
-            <strong>Catholic Readings</strong>
-            Full access to the daily Gospel and reflection. Designed for focused meditation without distractions.
-          </div>
-        </div>
-
-        <div class="shot-card">
-          <div class="protected-image" style="background-image: url('faithhabit-3a.png');"></div>
-          <div class="shot-caption">
-            <strong>Prayer Suite</strong>
-            Guided prayer tracking that lets you focus on your conversation with God, not your screen.
-          </div>
-        </div>
-
-        <div class="shot-card">
-          <div class="protected-image" style="background-image: url('faithhabit-4a.png');"></div>
-          <div class="shot-caption">
-            <strong>Momentum Tracking</strong>
-            Visual stats that celebrate consistency. Watch your spiritual habits build over weeks and months.
-          </div>
-        </div>
-
-        <div class="shot-card">
-          <div class="protected-image" style="background-image: url('Bible.png');"></div>
-          <div class="shot-caption">
-            <strong>Holy Bible</strong>
-            The complete Catholic Bible, available entirely offline. Bookmark, highlight, and grow in the Word.
-          </div>
-        </div>
-
-        <div class="shot-card">
-          <div class="protected-image" style="background-image: url('Cross.png');"></div>
-          <div class="shot-caption">
-            <strong>The Cross Journey</strong>
-            A unique rosary-style progression system that tracks your long-term spiritual growth.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="download" style="text-align: center;">
-      <div style="background: var(--card); border: 1px solid var(--accent-orange); padding: 50px 30px; border-radius: 40px; max-width: 850px; margin: 0 auto;">
-        <h2 style="margin-bottom: 15px;">Start Your 3-Day Free Trial</h2>
-        <p style="color: var(--muted); margin-bottom: 35px; font-size: 16px;">Download FaithHabit Pro on the App Store today to unlock the full library and journey tracking.</p>
-        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-          <a href="https://apps.apple.com/app/faithhabit/idXXXXXXXXXX" class="btn primary" style="padding: 18px 45px; font-size: 16px;">App Store →</a>
-          <a href="index.html" class="btn">Back to Home</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <p style="color: rgba(255,255,255,0.4); font-size: 12px; letter-spacing: 0.5px;">© 2026 COMMONLOGIX LLC. ALL RIGHTS RESERVED.</p>
-      <div class="footer-links">
-        <a href="privacy.html">Privacy Policy</a>
-        <span style="color: rgba(255,255,255,0.2);">|</span>
-        <a href="terms.html">Terms of Use</a>
-        <span style="color: rgba(255,255,255,0.2);">|</span>
-        <a href="index.html#contact">Support</a>
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow">The Ultimate Companion</div>
+      <h1 class="hero-title">A Sanctuary<br>on Your Phone.</h1>
+      <p class="hero-subtitle">
+        Scripture, Rosary, Daily Liturgy, and deep scholarship. 100% Private. Offline-first. Designed for the serious spiritual journey.
+      </p>
+      <a href="https://apps.apple.com/app/faithhabit/idXXXXXXXXXX" class="btn-primary">Download on App Store</a>
+      <div class="trust-badge">
+        3-Day Free Trial • No Accounts • No Tracking
       </div>
     </div>
+    <div class="hero-image">
+      <img src="faithhabit-1.png" alt="FaithHabit Bible Atlas Visual">
+    </div>
+  </section>
+
+  <section class="screenshot-strip">
+    <div class="screen-grid">
+      <img src="faithhabit-1.png" alt="Bible Atlas Progress Tracking">
+      <img src="faithhabit-2.png" alt="Daily Mass Readings and Liturgy">
+      <img src="faithhabit-3.png" alt="Animated Rosary and Chaplets">
+    </div>
+  </section>
+
+  <section class="features">
+    <h2 class="section-title">The Spiritual Engine</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3>Bible Atlas</h3>
+        <p>A breakthrough visual map of your progress. Light up every chapter as you journey through all 73 books of the Catholic canon.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Daily Liturgy</h3>
+        <p>Access the complete Daily Mass readings (First Reading, Psalm, Second Reading, and Gospel) 100% offline.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Traditional Devotions</h3>
+        <p>Guided Animated Rosary, Stations of the Cross, and 7 powerful Chaplets (Divine Mercy, St. Michael, and more).</p>
+      </div>
+      <div class="feature-card">
+        <h3>Deep Scholarship</h3>
+        <p>Study the Gospels with the Catena Aurea (St. Thomas Aquinas) and Haydock commentaries alongside the text.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Saint Library</h3>
+        <p>Insights into 300+ holy lives, including the Saint of the Day and summaries of their spiritual legacy.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Novena Tracker</h3>
+        <p>Organize your intercessory life with a library of 100+ traditional Novenas and progress tracking.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Sacred Narrative</h3>
+        <p>Experience the Bible as a cohesive story through 300+ immersive scenes from Creation to the Passion.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Catholic Dictionary</h3>
+        <p>Search 4,900+ Catholic terms with scholarly definitions and deep, expandable entries.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Spiritual Journal</h3>
+        <p>A private Daily Examen and reflection log stored entirely on your device. Your interior life stays yours.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Faith Garden</h3>
+        <p>Watch your consistency bloom with living analytics that track your growth and consistency over time.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mission">
+    <div class="mission-content">
+      <h2 class="mission-title">Why is FaithHabit so affordable?</h2>
+      <p class="mission-text">
+        We believe prayer should never be a luxury. FaithHabit is intentionally priced low so anyone can grow deeper in their faith, no matter their budget.
+      </p>
+      <p class="mission-text">
+        We don’t run ads, and we don’t sell your data. Your privacy matters to us. Your subscription helps us cover our costs and keep the app simple, private, and focused on helping you pray consistently and return to the sacraments.
+      </p>
+      <p style="font-weight: 800; color: var(--accent-orange); margin-top: 24px; font-size: 18px;">God Bless 🙏</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="mailto:info@commonlogix.com">Support</a>
+    </div>
+    <p style="margin-top: 32px; font-size: 12px; color: rgba(255,255,255,0.3); font-family: 'Space Mono', monospace;">
+      © 2026 COMMONLOGIX LLC. SHIPPING SANITY SINCE 2025.
+    </p>
   </footer>
 
 </body>
