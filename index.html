@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="FaithHabit: The Ultimate Catholic Companion. 100% Private, Offline Bible, Rosary, and Daily Liturgy.">
-  <title>FaithHabit | The Ultimate Catholic Companion</title>
+  <meta name="description" content="CommonLogix - Old school common sense. Modern execution. One indie dev shipping fast.">
+  <title>CommonLogix® | Common Sense Shipping Fast</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 
@@ -17,7 +17,6 @@
       --text-light: #e8e8e8;
       --accent-orange: #ff6b35;
       --accent-orange-dark: #e55a2b;
-      --accent-blue: #4ABDE3;
     }
 
     body {
@@ -25,7 +24,6 @@
       background: var(--bg-dark);
       color: var(--text-white);
       overflow-x: hidden;
-      line-height: 1.6;
     }
 
     /* HEADER */
@@ -61,6 +59,11 @@
       letter-spacing: 0.5px;
     }
 
+    .logo-text .reg {
+      font-size: 10px;
+      vertical-align: super;
+    }
+
     .nav-links {
       display: flex;
       gap: 32px;
@@ -76,263 +79,312 @@
       transition: color 0.3s;
     }
 
-    /* HERO */
+    .nav-links a:hover { color: var(--accent-orange); }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent-orange);
+      color: var(--bg-dark);
+      padding: 10px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 0.6px;
+      transition: all 0.25s ease;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .nav-cta:hover {
+      background: var(--accent-orange-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 40px rgba(255, 107, 53, 0.25);
+    }
+
+    /* HERO SECTION */
     .hero {
-      padding: 160px 40px 80px;
-      background: linear-gradient(180deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
-      text-align: center;
+      margin-top: 64px;
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 60px 40px;
+      gap: 60px;
       position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(255, 107, 53, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 107, 53, 0.03) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
     }
 
     .hero-eyebrow {
-      font-family: 'Space Mono', monospace;
-      color: var(--accent-orange);
       font-size: 14px;
-      letter-spacing: 2px;
-      margin-bottom: 16px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
+      color: var(--accent-orange);
+      margin-bottom: 24px;
+      font-weight: 600;
     }
 
     .hero-title {
-      font-size: clamp(40px, 8vw, 80px);
+      font-size: clamp(48px, 8vw, 92px);
       font-weight: 900;
-      line-height: 1;
+      line-height: 0.95;
       letter-spacing: -2px;
-      margin-bottom: 24px;
+      margin-bottom: 32px;
+      color: var(--text-white);
     }
+
+    .hero-title-accent { color: var(--accent-orange); }
 
     .hero-subtitle {
-      max-width: 800px;
-      margin: 0 auto 40px;
-      font-size: 18px;
+      font-size: 16px;
+      line-height: 1.7;
       color: var(--text-light);
+      margin-bottom: 32px;
     }
 
-    .cta-group {
+    .hero-tagline {
+      font-size: 15px;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    .hero-actions {
       display: flex;
-      justify-content: center;
-      gap: 16px;
       flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
     }
 
-    .btn {
-      padding: 18px 36px;
-      border-radius: 50px;
-      font-weight: 700;
-      text-decoration: none;
-      text-transform: uppercase;
-      font-size: 14px;
-      transition: all 0.3s ease;
-    }
-
-    .btn-primary {
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
       background: var(--accent-orange);
       color: var(--bg-dark);
-    }
-
-    .btn-primary:hover {
-      background: var(--accent-orange-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
-    }
-
-    .trust-badge {
-      margin-top: 32px;
-      font-family: 'Space Mono', monospace;
-      font-size: 12px;
-      color: var(--accent-blue);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    /* FEATURE GRID */
-    .features {
-      padding: 100px 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-title {
-      font-size: 32px;
-      font-weight: 900;
-      margin-bottom: 48px;
-      text-align: center;
-    }
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-    }
-
-    .feature-card {
-      background: rgba(255, 255, 255, 0.03);
-      padding: 32px;
-      border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: border-color 0.3s ease;
-    }
-
-    .feature-card:hover {
-      border-color: var(--accent-blue);
-    }
-
-    .feature-card h3 {
-      font-size: 20px;
-      margin-bottom: 12px;
-      color: var(--accent-blue);
-    }
-
-    .feature-card p {
-      font-size: 15px;
-      color: var(--text-light);
-    }
-
-    /* MISSION BOX */
-    .mission {
-      background: rgba(74, 189, 227, 0.05);
-      border-top: 1px solid rgba(74, 189, 227, 0.2);
-      border-bottom: 1px solid rgba(74, 189, 227, 0.2);
-      padding: 80px 40px;
-      text-align: center;
-    }
-
-    .mission-content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .mission-title {
-      font-size: 24px;
-      font-weight: 800;
-      margin-bottom: 24px;
-    }
-
-    .mission-text {
+      padding: 18px 42px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
       font-size: 16px;
-      color: var(--text-light);
-      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
+
+    .cta-button:hover {
+      background: var(--accent-orange-dark);
+      transform: scale(1.05);
+      box-shadow: 0 20px 60px rgba(255, 107, 53, 0.3);
+    }
+
+    .secondary-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.04);
+      color: var(--text-white);
+      padding: 16px 26px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      border: 1px solid rgba(255, 107, 53, 0.22);
+    }
+
+    /* HERO IMAGE */
+    .hero-image {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      border: 2px solid rgba(255, 107, 53, 0.3);
+      border-radius: 8px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+
+    /* TICKER STRIP */
+    .ticker-strip {
+      background: var(--accent-orange);
+      color: var(--bg-dark);
+      padding: 20px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .ticker-content {
+      display: flex;
+      animation: scroll 20s linear infinite;
+    }
+
+    .ticker-item {
+      padding-right: 60px;
+    }
+
+    .ticker-item::after { content: '•'; margin-left: 60px; }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* APPS SECTION */
+    .apps-section { padding: 120px 40px; background: var(--bg-dark); position: relative; z-index: 2; }
+    .apps-header { max-width: 1400px; margin: 0 auto 80px; text-align: center; }
+    .apps-header h2 { font-size: 56px; font-weight: 900; margin-bottom: 16px; letter-spacing: -1px; }
+    .apps-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; }
+    .app-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 107, 53, 0.2); border-radius: 12px; padding: 40px; transition: all 0.3s ease; }
+    .app-card:hover { transform: translateY(-8px); border-color: var(--accent-orange); }
+
+    .app-media { margin-top: 18px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .app-media img { width: 100%; height: 140px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); }
 
     /* FOOTER */
-    footer {
-      padding: 60px 40px;
-      text-align: center;
-      background: var(--bg-darker);
-    }
-
-    .footer-links a {
-      color: rgba(255, 255, 255, 0.5);
-      text-decoration: none;
-      margin: 0 12px;
-      font-size: 13px;
-    }
-
-    @media (max-width: 768px) {
-      .hero-title { font-size: 40px; }
-      .feature-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-    }
+    footer { background: var(--bg-darker); border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 60px 40px; text-align: center; }
+    .social-links { display: flex; justify-content: center; gap: 32px; margin-bottom: 40px; }
+    .social-links a { color: var(--text-light); text-decoration: none; font-size: 14px; text-transform: uppercase; }
   </style>
 </head>
 <body>
-
   <header>
     <div class="header-content">
       <a href="index.html" class="logo-container">
-        <div class="logo-text">CommonLogix<span style="font-size:10px; vertical-align:super;">®</span></div>
+        <img src="logo.png" alt="CommonLogix" style="width: 40px; height: 40px; border-radius: 4px;">
+        <div class="logo-text">CommonLogix<span class="reg">®</span></div>
       </a>
       <nav class="nav-links">
-        <a href="index.html#apps">Apps</a>
+        <a href="#apps">Apps</a>
+        <a href="faithhabit.html">FaithHabit</a>
         <a href="mission.html">Mission</a>
-        <a href="mailto:info@commonlogix.com">Support</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-cta" href="faithhabit.html">FaithHabit Live →</a>
       </nav>
     </div>
   </header>
 
   <section class="hero">
-    <div class="hero-eyebrow">Build a Sacred Rhythm</div>
-    <h1 class="hero-title">The Ultimate<br>Catholic Companion</h1>
-    <p class="hero-subtitle">
-      The most comprehensive offline Catholic toolset ever built. Scripture, Rosary, Daily Liturgy, and Scholarship—designed for the serious spiritual journey.
-    </p>
-    <div class="cta-group">
-      <a href="https://apps.apple.com/app/faithhabit/idXXXXXXXXXX" class="btn btn-primary">Download on App Store</a>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Welcome to CommonLogix®</div>
+      <h1 class="hero-title">
+        OLD SCHOOL<br>
+        COMMON SENSE<span class="hero-title-accent">.</span><br>
+        <span class="hero-title-accent">MODERN EXECUTION.</span>
+      </h1>
+      <p class="hero-subtitle">
+        An indie studio built on common sense and fast execution — no committees, no bloat, just software that respects your time and your brain.
+      </p>
+      <div class="hero-actions">
+        <a href="#apps" class="cta-button">Enter Mission Control →</a>
+        <a href="faithhabit.html" class="secondary-button">FaithHabit Landing Page →</a>
+      </div>
     </div>
-    <div class="trust-badge">
-      3-Day Free Trial • 100% Private • Offline First
+    <div class="hero-image">
+      <img src="hero.jpg" alt="Indie Dev Astronaut">
     </div>
   </section>
 
-  <section class="features">
-    <h2 class="section-title">A Comprehensive Spiritual Engine</h2>
-    <div class="feature-grid">
-      <div class="feature-card">
-        <h3>Bible Atlas</h3>
-        <p>Watch your progress unfold in real-time. A visual testament of your journey through all 73 books of Catholic Scripture.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Daily Liturgy</h3>
-        <p>Stay synchronized with the Church. Access the complete Daily Mass readings (First Reading, Psalm, Second Reading, and Gospel) offline.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Sacred Narrative</h3>
-        <p>Experience the Bible as a cohesive story through 300+ immersive, bite-sized scenes from Creation to the Passion.</p>
-      </div>
-      <div class="feature-card">
-        <h3>24 Reading Plans</h3>
-        <p>Choose your path with Canonical, Chronological, Timeline, and seasonal tracks designed for consistent growth.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Traditional Devotions</h3>
-        <p>Animated Rosary, Stations of the Cross, and 7 powerful Chaplets (Divine Mercy, St. Michael, Holy Wounds, and more).</p>
-      </div>
-      <div class="feature-card">
-        <h3>Deep Scholarship</h3>
-        <p>Deep dive into the Gospels with the <em>Catena Aurea</em> (compiled by St. Thomas Aquinas) and Haydock commentaries.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Saint Library</h3>
-        <p>Insights into 300+ holy lives, including the Saint of the Day and summaries of their spiritual legacy.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Spiritual Journal</h3>
-        <p>Reflect deeply with an integrated Daily Examen. Your spiritual life stays private—stored 100% on your device.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Catholic Dictionary</h3>
-        <p>Search and explore 4,900+ Catholic terms with quick definitions and detailed articles.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Novena Tracker</h3>
-        <p>Organize your intercessory life with a library of 100+ traditional Novenas and day-by-day progress tracking.</p>
-      </div>
+  <div class="ticker-strip">
+    <div class="ticker-content">
+      <div class="ticker-item">COMMON SENSE BUILDS BETTER</div>
+      <div class="ticker-item">COMMON SENSE > OVERTHINKING</div>
+      <div class="ticker-item">COMMON SENSE IS A FEATURE</div>
+      <div class="ticker-item">COMMON SENSE IS UNDERRATED</div>
     </div>
-  </section>
+  </div>
 
-  <section class="mission">
-    <div class="mission-content">
-      <h2 class="mission-title">Why is FaithHabit so affordable?</h2>
-      <p class="mission-text">
-        We believe prayer should never be a luxury. FaithHabit is intentionally priced low so anyone can grow deeper in their faith, no matter their budget.
-      </p>
-      <p class="mission-text">
-        We don’t run ads, and we don’t sell your data. Your privacy matters to us. Your subscription helps us cover our costs and keep the app simple, private, and focused on what matters most—helping you pray consistently and return to the sacraments.
-      </p>
-      <p style="font-weight: 800; color: var(--accent-orange); margin-top: 24px;">God Bless 🙏</p>
+  <section class="apps-section" id="apps">
+    <div class="apps-header">
+      <h2>The Arsenal</h2>
+      <p>Shipping sanity. One dev. No committees.</p>
+    </div>
+
+    <div class="apps-grid">
+      <div class="app-card">
+        <div class="app-icon" style="font-size: 40px; margin-bottom: 20px;">✝️</div>
+        <h3>FaithHabit: Catholic Companion</h3>
+        <p>
+          The ultimate spiritual engine. Bible Atlas, Daily Liturgy, Animated Rosary, and Scholarship. 100% Private. Offline-first.
+        </p>
+        <span class="app-status">Version 1.1.2 Live</span>
+        <div class="app-actions" style="margin-top: 20px;">
+          <a class="cta-button" style="padding: 10px 20px; font-size: 12px;" href="faithhabit.html">View Page →</a>
+          <a class="secondary-button" style="padding: 10px 20px; font-size: 12px;" href="https://apps.apple.com/app/faithhabit/idXXXXXXXXXX">App Store →</a>
+        </div>
+        <div class="app-media">
+          <img src="faithhabit-1.png" alt="Bible Atlas">
+          <img src="faithhabit-2.png" alt="Daily Liturgy">
+          <img src="faithhabit-3.png" alt="Devotions">
+        </div>
+      </div>
+
+      <div class="app-card">
+        <div class="app-icon" style="font-size: 40px; margin-bottom: 20px;">🗺️</div>
+        <h3>DadQuest</h3>
+        <p>Make fatherhood intentional again. Small moments, big connection.</p>
+        <span class="app-status">Coming 2026</span>
+      </div>
+
+      <div class="app-card">
+        <div class="app-icon" style="font-size: 40px; margin-bottom: 20px;">🏝️</div>
+        <h3>Brah,No...</h3>
+        <p>Your personal local guide to Big Island adventures. Insider knowledge for authentic experiences.</p>
+        <span class="app-status">Coming 2026</span>
+      </div>
     </div>
   </section>
 
   <footer>
-    <div class="footer-links">
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
-      <a href="mailto:info@commonlogix.com">Contact Support</a>
+    <div class="footer-content">
+      <p class="footer-tagline">Old school common sense. Modern execution. Built with intent.</p>
+      <div class="social-links">
+        <a href="https://www.youtube.com/@CommonLogix">YouTube</a>
+        <a href="mailto:info@commonlogix.com">Email</a>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 CommonLogix LLC. Shipping sanity, one app at a time.</p>
+        <div class="footer-links" style="margin-top: 20px;">
+          <a href="privacy.html" style="color: rgba(255,255,255,0.5); margin: 0 10px; text-decoration: none;">Privacy</a>
+          <a href="terms.html" style="color: rgba(255,255,255,0.5); margin: 0 10px; text-decoration: none;">Terms</a>
+        </div>
+      </div>
     </div>
-    <p style="margin-top: 24px; font-size: 12px; color: rgba(255,255,255,0.3);">
-      &copy; 2026 CommonLogix LLC. FaithHabit is a registered trademark.
-    </p>
   </footer>
-
 </body>
 </html>
