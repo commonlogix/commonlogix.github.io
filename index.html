@@ -162,14 +162,6 @@
       margin-bottom: 32px;
     }
 
-    .hero-tagline {
-      font-size: 15px;
-      font-style: italic;
-      color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 28px;
-      line-height: 1.6;
-    }
-
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
@@ -212,6 +204,13 @@
       letter-spacing: 0.6px;
       text-transform: uppercase;
       border: 1px solid rgba(255, 107, 53, 0.22);
+      transition: all 0.3s ease;
+    }
+
+    .secondary-button:hover {
+      border-color: rgba(255, 107, 53, 0.5);
+      background: rgba(255, 107, 53, 0.08);
+      transform: translateY(-1px);
     }
 
     /* HERO IMAGE */
@@ -269,17 +268,85 @@
     .apps-section { padding: 120px 40px; background: var(--bg-dark); position: relative; z-index: 2; }
     .apps-header { max-width: 1400px; margin: 0 auto 80px; text-align: center; }
     .apps-header h2 { font-size: 56px; font-weight: 900; margin-bottom: 16px; letter-spacing: -1px; }
+    .apps-header p { font-size: 18px; color: var(--text-light); letter-spacing: 0.5px; }
+
     .apps-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; }
-    .app-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 107, 53, 0.2); border-radius: 12px; padding: 40px; transition: all 0.3s ease; }
-    .app-card:hover { transform: translateY(-8px); border-color: var(--accent-orange); }
+    .app-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 107, 53, 0.2); border-radius: 12px; padding: 40px; transition: all 0.3s ease; position: relative; overflow: hidden; }
+    .app-card:hover { transform: translateY(-8px); border-color: var(--accent-orange); background: rgba(255, 107, 53, 0.05); }
+
+    .app-icon { font-size: 40px; margin-bottom: 20px; }
+    .app-card h3 { font-size: 24px; font-weight: 700; margin-bottom: 12px; color: var(--text-white); }
+    .app-card p { font-size: 16px; color: var(--text-light); line-height: 1.6; margin-bottom: 18px; }
+    .app-status { display: inline-block; background: rgba(255, 107, 53, 0.2); color: var(--accent-orange); padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; text-transform: uppercase; }
 
     .app-media { margin-top: 18px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-    .app-media img { width: 100%; height: 140px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); }
+    .app-media img { width: 100%; height: 140px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); filter: saturate(1.05) contrast(1.05); }
 
-    /* FOOTER */
-    footer { background: var(--bg-darker); border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 60px 40px; text-align: center; }
-    .social-links { display: flex; justify-content: center; gap: 32px; margin-bottom: 40px; }
-    .social-links a { color: var(--text-light); text-decoration: none; font-size: 14px; text-transform: uppercase; }
+    /* FOOTER (MATCHING PRIVACY PAGE EXACTLY) */
+    footer {
+      background: var(--bg-darker);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 60px 40px;
+      text-align: center;
+    }
+
+    .footer-content { max-width: 1200px; margin: 0 auto; }
+
+    .footer-tagline {
+      font-size: 18px;
+      color: var(--text-light);
+      margin-bottom: 32px;
+      letter-spacing: 0.5px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+
+    .social-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: color 0.3s;
+      text-transform: uppercase;
+    }
+
+    .social-links a:hover { color: var(--accent-orange); }
+
+    .footer-bottom {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 13px;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-legal-links {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .footer-legal-links a {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.4);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-legal-links a:hover { color: var(--text-white); }
+
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; padding: 60px 30px; gap: 40px; min-height: auto; }
+      .hero-image { order: -1; }
+      .hero-title { font-size: clamp(36px, 6vw, 64px); }
+      .nav-links { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -337,13 +404,13 @@
 
     <div class="apps-grid">
       <div class="app-card">
-        <div class="app-icon" style="font-size: 40px; margin-bottom: 20px;">✝️</div>
+        <div class="app-icon">✝️</div>
         <h3>FaithHabit: Catholic Companion</h3>
         <p>
           The ultimate spiritual engine. Bible Atlas, Daily Liturgy, Animated Rosary, and Scholarship. 100% Private. Offline-first.
         </p>
         <span class="app-status">Version 1.1.2 Live</span>
-        <div class="app-actions" style="margin-top: 20px;">
+        <div style="margin-top: 20px; display: flex; gap: 10px;">
           <a class="cta-button" style="padding: 10px 20px; font-size: 12px;" href="faithhabit.html">View Page →</a>
           <a class="secondary-button" style="padding: 10px 20px; font-size: 12px;" href="https://apps.apple.com/app/faithhabit/idXXXXXXXXXX">App Store →</a>
         </div>
@@ -355,14 +422,14 @@
       </div>
 
       <div class="app-card">
-        <div class="app-icon" style="font-size: 40px; margin-bottom: 20px;">🗺️</div>
+        <div class="app-icon">🗺️</div>
         <h3>DadQuest</h3>
         <p>Make fatherhood intentional again. Small moments, big connection.</p>
         <span class="app-status">Coming 2026</span>
       </div>
 
       <div class="app-card">
-        <div class="app-icon" style="font-size: 40px; margin-bottom: 20px;">🏝️</div>
+        <div class="app-icon">🏝️</div>
         <h3>Brah,No...</h3>
         <p>Your personal local guide to Big Island adventures. Insider knowledge for authentic experiences.</p>
         <span class="app-status">Coming 2026</span>
@@ -370,18 +437,23 @@
     </div>
   </section>
 
-  <footer>
+  <footer id="contact">
     <div class="footer-content">
-      <p class="footer-tagline">Old school common sense. Modern execution. Built with intent.</p>
+      <p class="footer-tagline">Old school common sense. Modern execution. Built with intent. Crafted with care.</p>
+      
       <div class="social-links">
-        <a href="https://www.youtube.com/@CommonLogix">YouTube</a>
+        <a href="https://www.youtube.com/@CommonLogix" target="_blank" rel="noopener noreferrer">YouTube</a>
+        <a href="https://x.com/common_logix" target="_blank" rel="noopener noreferrer">Twitter X</a>
+        <a href="https://www.tiktok.com/@common_logix" target="_blank" rel="noopener noreferrer">TikTok</a>
+        <a href="https://www.instagram.com/commonlogix/" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a href="mailto:info@commonlogix.com">Email</a>
       </div>
+
       <div class="footer-bottom">
         <p>&copy; 2026 CommonLogix LLC. Shipping sanity, one app at a time.</p>
-        <div class="footer-links" style="margin-top: 20px;">
-          <a href="privacy.html" style="color: rgba(255,255,255,0.5); margin: 0 10px; text-decoration: none;">Privacy</a>
-          <a href="terms.html" style="color: rgba(255,255,255,0.5); margin: 0 10px; text-decoration: none;">Terms</a>
+        <div class="footer-legal-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Use</a>
         </div>
       </div>
     </div>
