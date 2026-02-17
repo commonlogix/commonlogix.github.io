@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="CommonLogix Privacy Policy - How we handle your data." />
+  <meta name="description" content="CommonLogix Privacy Policy - Our commitment to privacy-first, offline-first software." />
   <title>Privacy Policy - CommonLogix®</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -161,6 +161,19 @@
       letter-spacing: 0.5px;
     }
 
+    .footer-legal-links {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .footer-legal-links a {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.4);
+      text-decoration: none;
+    }
+
     @media (max-width: 768px) {
       header { padding: 12px 20px; }
       .nav-links { display: none; }
@@ -181,7 +194,7 @@
       </a>
       <nav class="nav-links">
         <a href="index.html">Home</a>
-        <a href="index.html#apps">Apps</a>
+        <a href="terms.html">Terms</a>
         <a href="index.html#contact">Contact</a>
       </nav>
     </div>
@@ -197,10 +210,16 @@
       we collect (if any), how we use it, and the choices you have when you use our websites and mobile applications.
     </p>
 
+    <h2>Plain-English Summary</h2>
+    <p>
+      We build privacy-first software. Many CommonLogix apps are designed to work offline and keep your content on your device.
+      We do not run advertising trackers inside our apps, and we do not use third-party analytics for behavioral profiling.
+    </p>
+
     <h2>Offline-First Apps (On-Device Data)</h2>
     <p>
-      Many CommonLogix apps are designed to work offline. In those apps, your content (for example, notes, journal entries,
-      preferences, and settings) is stored locally on your device. We do not receive that on-device content unless you
+      Many CommonLogix apps store your content locally on your device (for example, notes, journal entries, preferences, and settings).
+      That on-device content stays in the app’s private storage on your device. We do not receive your on-device content unless you
       explicitly choose to contact us and include it in your message.
     </p>
 
@@ -212,15 +231,18 @@
         (such as your email address and the contents of your message).
       </li>
       <li>
-        <strong>Website information:</strong> Our website host may automatically log standard technical information
-        (such as IP address, browser type, and pages visited) to keep the site secure and functioning.
-      </li>
-      <li>
-        <strong>Diagnostics and crash information (if enabled):</strong> Some apps may use platform-provided diagnostics
-        or crash reporting to help us identify and fix bugs. These reports are intended to contain technical data about
-        app performance and errors, not the private content you create in the app.
+        <strong>Website server logs:</strong> Our website hosting provider may automatically process basic technical logs
+        (such as IP address, browser type, and pages visited) to operate, secure, and protect the website from abuse.
       </li>
     </ul>
+
+    <h2>Diagnostics & Crash Reporting</h2>
+    <p>
+      CommonLogix apps do not include advertising trackers or SDKs for behavioral analytics.
+      Some platform-level diagnostics may exist at the operating system level (for example, Apple’s device crash logs). If you choose to
+      share diagnostic information with your platform provider, it may be used to help improve app stability. These reports are intended 
+      to contain technical details about errors and performance—not the private content you create inside the app.
+    </p>
 
     <h2>What We Do Not Collect</h2>
     <p>Unless a specific app feature clearly requires it (and you choose to use that feature), we do not collect:</p>
@@ -229,6 +251,7 @@
       <li>Contact lists or address book data</li>
       <li>Photos, camera data, or microphone recordings</li>
       <li>Private app content stored locally on your device (such as personal notes or journals)</li>
+      <li>Advertising identifiers or cross-app tracking data</li>
       <li>Sensitive personal data such as health data</li>
     </ul>
 
@@ -254,10 +277,6 @@
         <strong>Hosting:</strong> Our website may be hosted by a third-party provider that processes standard access logs to
         operate and secure the website.
       </li>
-      <li>
-        <strong>Diagnostics (optional):</strong> If an app uses crash reporting, those providers process technical crash data
-        on our behalf.
-      </li>
     </ul>
     <p>
       Third-party providers have their own privacy policies and practices. We encourage you to review them.
@@ -266,7 +285,8 @@
     <h2>Data Retention</h2>
     <p>
       We keep information only as long as necessary for the purposes described above. Support emails and related records may
-      be retained to help resolve issues and improve support quality. On-device app content remains on your device unless you
+      be retained to help resolve issues and improve support quality. Website server logs are retained by our hosting provider
+      for limited periods consistent with operational and security needs. On-device app content remains on your device unless you
       choose to share it with us.
     </p>
 
@@ -278,7 +298,7 @@
     <ul>
       <li>
         <strong>On-device data:</strong> You can delete app content stored on your device by using in-app delete options (if
-        available) or uninstalling the app.
+        available), using an in-app “reset” feature (if provided), or uninstalling the app.
       </li>
       <li>
         <strong>Support communications:</strong> You may request deletion of support emails you have sent us by contacting us.
@@ -290,9 +310,10 @@
 
     <h2>Children's Privacy</h2>
     <p>
-      Our services are not directed to children under 13, and we do not knowingly collect personal information from children
-      under 13. If you believe a child has provided personal information to us, contact us and we will take appropriate
-      steps to delete it.
+      Our services are not directed to children under 13. We do not knowingly collect personal information from children under 13.
+      Because many CommonLogix apps are offline-first and do not require accounts, any content created in the app is typically stored
+      only on the device. If you believe a child has provided personal information to us via email or other direct contact, reach out and
+      we will take appropriate steps to delete it.
     </p>
 
     <h2>Security</h2>
@@ -326,6 +347,10 @@
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 CommonLogix LLC. Shipping sanity, one app at a time.</p>
+        <div class="footer-legal-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Use</a>
+        </div>
       </div>
     </div>
   </footer>
