@@ -14,6 +14,8 @@
       --text-white: #ffffff;
       --text-light: #e8e8e8;
       --accent-orange: #ff6b35;
+      --card: rgba(255, 255, 255, 0.06);
+      --card-border: rgba(255, 255, 255, 0.10);
     }
 
     body {
@@ -86,8 +88,36 @@
     .last-updated {
       color: var(--text-light);
       font-size: 14px;
-      margin-bottom: 48px;
+      margin-bottom: 18px;
       letter-spacing: 0.5px;
+    }
+
+    .policy-badges {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid var(--card-border);
+      background: var(--card);
+      border-radius: 999px;
+      color: var(--text-light);
+      font-size: 12px;
+      letter-spacing: 0.2px;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent-orange);
+      display: inline-block;
     }
 
     h2 {
@@ -124,6 +154,18 @@
     }
 
     a:hover { text-decoration: underline; }
+
+    .callout {
+      border: 1px solid var(--card-border);
+      background: var(--card);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin: 16px 0 24px;
+    }
+
+    .callout strong {
+      color: var(--text-white);
+    }
 
     footer {
       background: var(--bg-darker);
@@ -166,12 +208,18 @@
       display: flex;
       justify-content: center;
       gap: 20px;
+      flex-wrap: wrap;
     }
 
     .footer-legal-links a {
       font-size: 12px;
       color: rgba(255, 255, 255, 0.4);
       text-decoration: none;
+    }
+
+    .footer-legal-links a:hover {
+      color: var(--accent-orange);
+      text-decoration: underline;
     }
 
     @media (max-width: 768px) {
@@ -204,10 +252,17 @@
     <h1>Privacy Policy</h1>
     <p class="last-updated">Last updated: February 16, 2026</p>
 
+    <div class="policy-badges" aria-label="Privacy highlights">
+      <span class="badge"><span class="badge-dot"></span>Offline-first</span>
+      <span class="badge"><span class="badge-dot"></span>No ad tracking</span>
+      <span class="badge"><span class="badge-dot"></span>No behavioral profiling</span>
+      <span class="badge"><span class="badge-dot"></span>On-device content stays on device</span>
+    </div>
+
     <h2>Introduction</h2>
     <p>
       CommonLogix LLC ("CommonLogix," "we," "us," or "our") respects your privacy. This Privacy Policy explains what information
-      we collect (if any), how we use it, and the choices you have when you use our websites and mobile applications.
+      we collect, how we use it, and the choices you have when you use our websites and mobile applications.
     </p>
 
     <h2>Plain-English Summary</h2>
@@ -215,6 +270,17 @@
       We build privacy-first software. Many CommonLogix apps are designed to work offline and keep your content on your device.
       We do not run advertising trackers inside our apps, and we do not use third-party analytics for behavioral profiling.
     </p>
+
+    <div class="callout">
+      <p style="margin-bottom: 0;">
+        <strong>FaithHabit: Catholic Companion — App-Specific Privacy Notes</strong><br />
+        FaithHabit is an offline-first app. FaithHabit does not require account creation and does not collect personal data for advertising,
+        tracking, or profiling. FaithHabit does not use third-party analytics SDKs. FaithHabit does not sell user data. Data you create in
+        FaithHabit (such as prayer logs, notes, journal entries, settings, and preferences) is stored locally on your device. CommonLogix does
+        not receive this content unless you explicitly email us and include it in your message. If you contact us for support, we receive your
+        email address and the contents of your message so we can respond.
+      </p>
+    </div>
 
     <h2>Offline-First Apps (On-Device Data)</h2>
     <p>
@@ -236,11 +302,11 @@
       </li>
     </ul>
 
-    <h2>Diagnostics & Crash Reporting</h2>
+    <h2>Diagnostics &amp; Crash Reporting</h2>
     <p>
       CommonLogix apps do not include advertising trackers or SDKs for behavioral analytics.
       Some platform-level diagnostics may exist at the operating system level (for example, Apple’s device crash logs). If you choose to
-      share diagnostic information with your platform provider, it may be used to help improve app stability. These reports are intended 
+      share diagnostic information with your platform provider, it may be used to help improve app stability. These reports are intended
       to contain technical details about errors and performance—not the private content you create inside the app.
     </p>
 
@@ -270,8 +336,8 @@
     </p>
     <ul>
       <li>
-        <strong>App Store / Payments:</strong> If you purchase a subscription or in-app purchase, the transaction is handled
-        by the platform provider (for example, Apple). We do not receive your full payment details.
+        <strong>App Store / Payments:</strong> FaithHabit uses Apple’s App Store for payments and subscriptions. If you purchase a subscription
+        or in-app purchase, the transaction is handled by the platform provider (Apple). We do not receive your full payment details.
       </li>
       <li>
         <strong>Hosting:</strong> Our website may be hosted by a third-party provider that processes standard access logs to
