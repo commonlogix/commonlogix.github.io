@@ -253,10 +253,7 @@
       animation: scroll 20s linear infinite;
     }
 
-    .ticker-item {
-      padding-right: 60px;
-    }
-
+    .ticker-item { padding-right: 60px; }
     .ticker-item::after { content: '•'; margin-left: 60px; }
 
     @keyframes scroll {
@@ -282,7 +279,7 @@
     .app-media { margin-top: 18px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
     .app-media img { width: 100%; height: 140px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); filter: saturate(1.05) contrast(1.05); }
 
-    /* FOOTER (Matched exactly to Privacy Page) */
+    /* FOOTER */
     footer {
       background: var(--bg-darker);
       border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -353,10 +350,11 @@
       <nav class="nav-links">
         <a href="#apps">Apps</a>
         <a href="faithhabit.html">FaithHabit</a>
+        <a href="moviehabit.html">MovieHabit</a>
         <a href="mission.html">Mission</a>
         <a href="support.html">Support</a>
         <a href="#contact">Contact</a>
-        <a class="nav-cta" href="faithhabit.html">FaithHabit Live →</a>
+        <a class="nav-cta" href="#apps">Live Apps →</a>
       </nav>
     </div>
   </header>
@@ -374,7 +372,8 @@
       </p>
       <div class="hero-actions">
         <a href="#apps" class="cta-button">Enter Mission Control →</a>
-        <a href="faithhabit.html" class="secondary-button">FaithHabit Landing Page →</a>
+        <a href="faithhabit.html" class="secondary-button">FaithHabit →</a>
+        <a href="moviehabit.html" class="secondary-button">MovieHabit →</a>
       </div>
     </div>
     <div class="hero-image">
@@ -384,6 +383,10 @@
 
   <div class="ticker-strip">
     <div class="ticker-content">
+      <div class="ticker-item">COMMON SENSE BUILDS BETTER</div>
+      <div class="ticker-item">COMMON SENSE > OVERTHINKING</div>
+      <div class="ticker-item">COMMON SENSE IS A FEATURE</div>
+      <div class="ticker-item">COMMON SENSE IS UNDERRATED</div>
       <div class="ticker-item">COMMON SENSE BUILDS BETTER</div>
       <div class="ticker-item">COMMON SENSE > OVERTHINKING</div>
       <div class="ticker-item">COMMON SENSE IS A FEATURE</div>
@@ -398,6 +401,8 @@
     </div>
 
     <div class="apps-grid">
+
+      <!-- FaithHabit -->
       <div class="app-card">
         <div class="app-icon">✝️</div>
         <h3>FaithHabit: Prayer Tracker</h3>
@@ -405,7 +410,7 @@
           Private Catholic habit builder for daily prayer, Scripture, saints, Mass logs, and visual spiritual progress. 100% private. Offline-first.
         </p>
         <span class="app-status">Private Catholic Habit Builder</span>
-        <div style="margin-top: 20px; display: flex; gap: 10px;">
+        <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
           <a class="cta-button" style="padding: 10px 20px; font-size: 12px;" href="faithhabit.html">View Page →</a>
           <a class="secondary-button" style="padding: 10px 20px; font-size: 12px;" href="https://apps.apple.com/app/id6757466679" target="_blank" rel="noopener">App Store →</a>
         </div>
@@ -416,6 +421,25 @@
         </div>
       </div>
 
+      <!-- MovieHabit -->
+      <div class="app-card">
+        <div class="app-icon">🎬</div>
+        <h3>MovieHabit: Cinema Universe</h3>
+        <p>
+          A fully offline cinephile universe — rate and track films, explore the Filmweb graph, chat with your AI Film Sensei, build a VHS video store, play trivia, and own your obsession. 100% private. No account required.
+        </p>
+        <span class="app-status">Coming to App Store</span>
+        <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+          <a class="secondary-button" style="padding: 10px 20px; font-size: 12px;" href="moviehabit.html">View Page →</a>
+        </div>
+        <div class="app-media">
+          <img src="Homescreen.png" alt="MovieHabit Home">
+          <img src="FilmWeb 1.png" alt="Filmweb">
+          <img src="Film DNA.png" alt="Film DNA">
+        </div>
+      </div>
+
+      <!-- DadQuest -->
       <div class="app-card">
         <div class="app-icon">🗺️</div>
         <h3>DadQuest</h3>
@@ -423,12 +447,14 @@
         <span class="app-status">Coming 2026</span>
       </div>
 
+      <!-- Brah,No -->
       <div class="app-card">
         <div class="app-icon">🏝️</div>
         <h3>Brah,No...</h3>
         <p>Your personal local guide to Big Island adventures. Insider knowledge for authentic experiences.</p>
         <span class="app-status">Coming 2026</span>
       </div>
+
     </div>
   </section>
 
