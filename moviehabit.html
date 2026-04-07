@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MovieHabit: Cinema Universe. The last great video store is back. Explore the Filmweb, build VHS aisles, chat with AI Sensei, play Movie Mashups, Trivia & Store Sims. Own your obsession. 100% Offline.">
+  <title>MovieHabit: Cinema Universe | Own Your Obsession</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-dark: #0f0f0f;
+      --bg-darker: #0a0a0a;
+      --text-white: #ffffff;
+      --text-light: #e8e8e8;
+      --text-muted: rgba(255,255,255,0.55);
+      --accent-gold: #C9A84C;
+      --accent-gold-dark: #a8883a;
+      --accent-gold-dim: rgba(201,168,76,0.08);
+      --accent-orange: #ff6b35;
+      --accent-orange-dark: #e55a2b;
+      --border: rgba(255,255,255,0.07);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-white);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ─────────────────────────────────────────────────────── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(15, 15, 15, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      padding: 16px 32px;
+    }
+
+    .header-content {
+      max-width: 1600px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-white);
+    }
+
+    .logo-text { font-size: 18px; font-weight: 700; }
+
+    .nav-links { display: flex; gap: 32px; font-size: 13px; text-transform: uppercase; }
+    .nav-links a { color: var(--text-light); text-decoration: none; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--accent-gold); }
+
+    /* ── HERO ───────────────────────────────────────────────────────── */
+    .hero {
+      padding: 160px 40px 60px;
+      background: linear-gradient(180deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Space Mono', monospace;
+      color: var(--accent-gold);
+      font-size: 14px;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      font-size: clamp(40px, 8vw, 72px);
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+
+    .hero-icon {
+      width: 80px;
+      margin-bottom: 24px;
+      filter: drop-shadow(0 0 10px rgba(201, 168, 76, 0.3));
+      border-radius: 18px;
+    }
+
+    .hero-sub {
+      max-width: 700px;
+      margin: 0 auto 16px;
+      color: var(--text-light);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .hero-badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 auto 32px;
+      max-width: 700px;
+    }
+
+    .badge {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--text-muted);
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 18px 36px;
+      background: var(--accent-gold);
+      color: var(--bg-dark);
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      cursor: default;
+      opacity: 0.85;
+    }
+
+    .btn-primary.live { cursor: pointer; opacity: 1; }
+    .btn-primary.live:hover { background: var(--accent-gold-dark); transform: translateY(-2px); }
+
+    /* ── SCREENSHOTS ────────────────────────────────────────────────── */
+    .screenshot-section {
+      padding: 40px 20px;
+      background: var(--bg-dark);
+    }
+
+    .screen-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      justify-items: center;
+    }
+
+    .phone-frame {
+      width: 100%;
+      max-width: 200px;
+      border: 6px solid #1a1a1a;
+      border-radius: 30px;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+
+    .phone-frame img { width: 100%; display: block; }
+
+    /* ── SECTION SHARED ─────────────────────────────────────────────── */
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .section-body {
+      font-size: 15px;
+      color: var(--text-light);
+      line-height: 1.75;
+      max-width: 680px;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    /* ── INTRO SECTION ──────────────────────────────────────────────── */
+    .intro-section {
+      padding: 80px 40px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .intro-section .section-body { margin: 0 auto; }
+
+    .privacy-strip {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .privacy-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 30px;
+      border: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-light);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .privacy-pill span.dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent-gold);
+      display: inline-block;
+    }
+
+    /* ── FEATURE GRID ───────────────────────────────────────────────── */
+    .features { padding: 80px 40px; max-width: 1200px; margin: 0 auto; }
+    .features-header { margin-bottom: 48px; }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: rgba(255,255,255,0.02);
+      padding: 32px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      transition: border-color 0.3s;
+    }
+
+    .feature-card:hover { border-color: rgba(201,168,76,0.25); }
+
+    .feature-card-icon { font-size: 28px; margin-bottom: 16px; display: block; }
+
+    .feature-card h3 { color: var(--accent-gold); margin-bottom: 10px; font-size: 18px; }
+
+    .feature-card p { font-size: 14px; color: var(--text-light); line-height: 1.7; margin-bottom: 0; }
+
+    .feature-card ul { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+
+    .feature-card ul li {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      padding-left: 14px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .feature-card ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent-gold);
+      font-size: 11px;
+      top: 2px;
+    }
+
+    /* ── DEEP DIVE ROWS ─────────────────────────────────────────────── */
+    .deep-section { padding: 80px 40px; border-top: 1px solid var(--border); }
+    .deep-section.alt { background: rgba(255,255,255,0.015); }
+
+    .deep-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .deep-inner.reverse { direction: rtl; }
+    .deep-inner.reverse > * { direction: ltr; }
+
+    .deep-list { list-style: none; margin-top: 24px; display: flex; flex-direction: column; gap: 20px; }
+
+    .deep-list li { display: flex; gap: 14px; }
+
+    .deep-list-icon {
+      flex-shrink: 0;
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .deep-list-text strong { display: block; font-size: 14px; color: var(--text-white); margin-bottom: 3px; }
+    .deep-list-text span { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.55; }
+
+    .deep-visual { display: flex; flex-direction: column; gap: 12px; }
+
+    .stat-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 24px;
+    }
+
+    .stat-card .stat-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      display: block;
+    }
+
+    .stat-card .stat-label { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+
+    .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    /* ── FREEMIUM SECTION ───────────────────────────────────────────── */
+    .freemium-section {
+      padding: 80px 40px;
+      border-top: 1px solid var(--border);
+      background: rgba(201,168,76,0.03);
+    }
+
+    .freemium-inner { max-width: 1000px; margin: 0 auto; }
+
+    .freemium-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .plan-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+    }
+
+    .plan-card.premium {
+      border-color: rgba(201,168,76,0.4);
+      background: rgba(201,168,76,0.04);
+    }
+
+    .plan-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--text-white);
+    }
+
+    .plan-card.premium h3 { color: var(--accent-gold); }
+
+    .plan-price {
+      font-family: 'Space Mono', monospace;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .plan-card p { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; line-height: 1.6; }
+
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+    .plan-features li {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .plan-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent-gold);
+      font-size: 12px;
+    }
+
+    .plan-features li.limited::before { content: '◐'; color: rgba(255,255,255,0.3); }
+
+    /* ── CALLOUT ────────────────────────────────────────────────────── */
+    .callout-section {
+      padding: 80px 40px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: rgba(201,168,76,0.03);
+    }
+
+    .callout-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+    .callout-inner .section-label { display: block; }
+
+    .callout-quote {
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 700;
+      line-height: 1.4;
+      color: var(--text-white);
+      margin: 20px 0;
+    }
+
+    .callout-sub { font-size: 15px; color: var(--text-light); line-height: 1.7; }
+
+    /* ── MISSION ────────────────────────────────────────────────────── */
+    .mission {
+      background: rgba(201,168,76,0.03);
+      padding: 80px 40px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .mission-content { max-width: 750px; margin: 0 auto; }
+
+    .mission-content h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 900; margin-bottom: 24px; }
+
+    .mission-content p { font-size: 15px; color: var(--text-light); line-height: 1.75; margin-bottom: 20px; }
+    .mission-content p:last-of-type { margin-bottom: 0; }
+
+    .developer-note {
+      margin-top: 48px;
+      padding: 32px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      text-align: left;
+    }
+
+    .developer-note h3 {
+      font-size: 16px;
+      color: var(--accent-gold);
+      margin-bottom: 16px;
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .developer-note p { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.75; margin-bottom: 14px; }
+    .developer-note p:last-child { margin-bottom: 0; }
+
+    /* ── FOOTER ─────────────────────────────────────────────────────── */
+    footer {
+      padding: 60px 40px;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      border-top: 1px solid var(--border);
+    }
+
+    footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
+
+    /* ── RESPONSIVE ─────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .deep-inner { grid-template-columns: 1fr; gap: 40px; }
+      .deep-inner.reverse { direction: ltr; }
+      .freemium-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .hero { padding: 120px 24px 50px; }
+      .hero-title { font-size: 36px; }
+      .screen-grid { grid-template-columns: repeat(2, 1fr); }
+      .features, .deep-section, .mission { padding: 60px 24px; }
+      .stat-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-content">
+      <a href="index.html" class="logo-container">
+        <img src="logo.png" alt="CommonLogix" style="width: 32px; height: 32px;">
+        <div class="logo-text">CommonLogix®</div>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html#apps">Back to Studio</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <img src="MovieHabit Apple Icon.png" alt="MovieHabit Icon" class="hero-icon">
+    <div class="hero-eyebrow">The Last Great Video Store Is Back</div>
+    <h1 class="hero-title">MovieHabit: Cinema Universe</h1>
+    <p class="hero-sub">
+      A fully offline cinephile universe on your iPhone — rate and track films, explore actor connections, chat with your AI film guide, build a VHS video store, play trivia, and own your obsession. No account required. No data leaves your device.
+    </p>
+    <div class="hero-badges">
+      <span class="badge">100% Offline</span>
+      <span class="badge">No Account Required</span>
+      <span class="badge">No Ads Ever</span>
+      <span class="badge">AI Film Sensei</span>
+      <span class="badge">On-Device AI Only</span>
+      <span class="badge">Director's Cut Available</span>
+    </div>
+    <a class="btn-primary" style="pointer-events:none;">Coming Soon to App Store</a>
+  </section>
+
+  <section class="screenshot-section">
+    <div class="screen-grid">
+      <div class="phone-frame"><img src="Homescreen.png" alt="MovieHabit Home"></div>
+      <div class="phone-frame"><img src="FilmWeb 1.png" alt="Filmweb"></div>
+      <div class="phone-frame"><img src="Movie Mashup Game.png" alt="Movie Mashup"></div>
+      <div class="phone-frame"><img src="Movie Sensei Ai.png" alt="Movie Sensei AI"></div>
+      <div class="phone-frame"><img src="Film Almanac.png" alt="Film Almanac"></div>
+      <div class="phone-frame"><img src="Movie Trivia.png" alt="Movie Trivia"></div>
+      <div class="phone-frame"><img src="Midnight Video Game.png" alt="Midnight Video"></div>
+      <div class="phone-frame"><img src="FilmWeb 2.png" alt="Filmweb 2"></div>
+      <div class="phone-frame"><img src="Film DNA.png" alt="Film DNA"></div>
+      <div class="phone-frame"><img src="CineQuests.png" alt="CineQuests"></div>
+    </div>
+  </section>
+
+  <section class="intro-section">
+    <div class="section-label">Own Your Obsession</div>
+    <h2 class="section-title">Cinema is a habit worth building.</h2>
+    <p class="section-body">
+      MovieHabit is not a streaming guide. It's not a social network. It's a private cinephile universe that lives entirely on your device — built for people who take film seriously and want a space that respects that.
+      <br><br>
+      Rate and track what you've watched. Explore actor and director connections through the Filmweb graph. Ask your AI Film Sensei anything. Build your own VHS video store, complete CineQuests, analyze your Film DNA, and play Trivia and Movie Mashup — all 100% offline, with no accounts and no data leaving your iPhone.
+      <br><br>
+      This is your cinephile sanctuary. It runs on Apple Foundation Models, stores everything locally, and never needs the internet to work.
+    </p>
+    <div class="privacy-strip">
+      <div class="privacy-pill"><span class="dot"></span> No servers or cloud accounts</div>
+      <div class="privacy-pill"><span class="dot"></span> All data stored on your device</div>
+      <div class="privacy-pill"><span class="dot"></span> AI runs on-device only</div>
+      <div class="privacy-pill"><span class="dot"></span> Works fully without internet</div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="features">
+    <div class="features-header">
+      <div class="section-label">What's Inside</div>
+      <h2 class="section-title">Everything a cinephile needs.<br>Nothing they don't.</h2>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <span class="feature-card-icon">🕸️</span>
+        <h3>Filmweb</h3>
+        <p>An interactive graph that maps the connections between actors, directors, and films. Start with any movie and expand outward — six degrees of cinema, visualized in real time, all offline.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-card-icon">🎬</span>
+        <h3>Movie Sensei</h3>
+        <p>Your private AI film guide powered by Apple Foundation Models. Ask it anything — recommendations, analysis, obscure trivia, director retrospectives. All on-device. Zero cloud. Zero data collection.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-card-icon">🎭</span>
+        <h3>Movie Mashup</h3>
+        <p>Pick a genre, setting, cast, and wild card — and watch the AI generate a completely original screenplay pitch. Every mashup is unique, shareable, and wildly entertaining. A viral engine built for cinephiles.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-card-icon">📼</span>
+        <h3>Midnight Video</h3>
+        <p>A fully simulated retro video store. Serve customers with distinct personalities, match them to the perfect film, and build your reputation as the greatest video store clerk who ever lived.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-card-icon">🧬</span>
+        <h3>Film DNA</h3>
+        <p>A deep analysis of your cinematic taste fingerprint — top directors, actor loyalties, genre scorecards, decade report cards, rating personality, contrarian picks, and your full cinephile profile.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-card-icon">🏆</span>
+        <h3>Movie Trivia</h3>
+        <p>Hundreds of questions across every era, genre, and category. Multiple modes including Popcorn, Film School, Sudden Death, and more. Powered by on-device AI for Sensei-guided answers.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-card-icon">🗺️</span>
+        <h3>CineQuests</h3>
+        <p>Curated film journeys — themed watchlists with sprint, journey, and challenge tiers. From 80s Action Cheese to director retrospectives and decade deep-dives. Complete them, earn your stripes.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-card-icon">📅</span>
+        <h3>Film Almanac</h3>
+        <p>A cinema history calendar. Every day of the year is packed with births, deaths, premieres, and forgotten anniversaries from film history. A daily ritual for the obsessed.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-card-icon">🏝️</span>
+        <h3>Desert Island 10</h3>
+        <p>Pick the 10 films you'd bring to a desert island. Get an AI-written analysis of what your choices reveal about you. Share your Gold Card. The most personal film list you'll ever make.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-card-icon">🎪</span>
+        <h3>The Vault</h3>
+        <p>Track your physical film collection — 4K, Blu-ray, DVD. Log cinema visits with theater, format, and concession spend. Track every streaming subscription. Your complete cinephile ledger.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-card-icon">🎯</span>
+        <h3>Cast Call</h3>
+        <p>A mystery film is revealed one cast member at a time, in billing order. Guess the movie before the credits roll. Three modes: Matinee, Midnight Run, and Director's Cut. Pure cinema knowledge.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-card-icon">⭐</span>
+        <h3>Filmweb Rating & Tracking</h3>
+        <p>Rate every film you've watched, track your watchlist, and build a complete personal cinema history — all stored locally. Your ratings power your Film DNA and CineQuest progress automatically.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="deep-section">
+    <div class="deep-inner">
+      <div class="deep-text">
+        <div class="section-label">The AI Core</div>
+        <h2 class="section-title">On-device AI. Zero compromise.</h2>
+        <p class="section-body">Every AI feature in MovieHabit runs entirely on your iPhone using Apple Foundation Models. No queries are sent to external servers. No data leaves your device. Your film conversations are private by design.</p>
+        <ul class="deep-list">
+          <li>
+            <div class="deep-list-icon">🎓</div>
+            <div class="deep-list-text">
+              <strong>Movie Sensei Chat</strong>
+              <span>Ask anything about cinema — recommendations, analysis, director history, deep cuts. The Sensei knows its stuff and keeps every conversation on your device.</span>
+            </div>
+          </li>
+          <li>
+            <div class="deep-list-icon">🎬</div>
+            <div class="deep-list-text">
+              <strong>Movie Mashup Generator</strong>
+              <span>The AI generates original screenplay pitches from your chosen ingredients. Every script is unique, cinematic, and completely offline.</span>
+            </div>
+          </li>
+          <li>
+            <div class="deep-list-icon">🏝️</div>
+            <div class="deep-list-text">
+              <strong>Desert Island Analysis</strong>
+              <span>Once you've built your Desert Island 10, the AI writes a personalized essay on what your picks reveal about your cinematic soul.</span>
+            </div>
+          </li>
+          <li>
+            <div class="deep-list-icon">📼</div>
+            <div class="deep-list-text">
+              <strong>Midnight Video Epilogue</strong>
+              <span>After each shift at the video store, the AI generates a unique story epilogue about the customers you served and the films you recommended.</span>
+            </div>
+          </li>
+          <li>
+            <div class="deep-list-icon">❓</div>
+            <div class="deep-list-text">
+              <strong>Trivia Sensei Feedback</strong>
+              <span>After each trivia answer, the Sensei explains why you were right or wrong — with context, history, and a passion for film that makes every question educational.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="deep-visual">
+        <div class="stat-card">
+          <span class="stat-num">100%</span>
+          <div class="stat-label">On-device AI — no cloud, no queries sent</div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-card">
+            <span class="stat-num">5</span>
+            <div class="stat-label">Distinct AI features</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">0</span>
+            <div class="stat-label">Data points collected</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">Apple</span>
+          <div class="stat-label">Foundation Models — the only LLM runtime used</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="deep-section alt">
+    <div class="deep-inner reverse">
+      <div class="deep-text">
+        <div class="section-label">The Game Layer</div>
+        <h2 class="section-title">The most cinephile arcade ever built.</h2>
+        <p class="section-body">MovieHabit is built around the belief that film knowledge should be earned and celebrated. The game layer turns your cinematic education into something you can actually play.</p>
+        <ul class="deep-list">
+          <li>
+            <div class="deep-list-icon">🎪</div>
+            <div class="deep-list-text">
+              <strong>Movie Trivia — 4 Modes</strong>
+              <span>Popcorn (casual), Film School (deep), Sudden Death (one strike), and Auteur (director-focused). Hundreds of questions with Sensei-powered explanations after every answer.</span>
+            </div>
+          </li>
+          <li>
+            <div class="deep-list-icon">🎭</div>
+            <div class="deep-list-text">
+              <strong>Cast Call — 3 Difficulty Tiers</strong>
+              <span>Matinee (multiple choice, answer always included), Midnight Run (choices may omit the answer), Director's Cut (type only, fuzzy matching). Pure cinema identification.</span>
+            </div>
+          </li>
+          <li>
+            <div class="deep-list-icon">🎬</div>
+            <div class="deep-list-text">
+              <strong>Movie Mashup — Infinite Scripts</strong>
+              <span>63 genres, 130+ locations, 130 wild cards, live actor search from your local database. Every combination generates a completely original AI screenplay pitch.</span>
+            </div>
+          </li>
+          <li>
+            <div class="deep-list-icon">📼</div>
+            <div class="deep-list-text">
+              <strong>Midnight Video — Arcade & Sandbox</strong>
+              <span>Arcade mode: 15 minutes, 3 lives, clock ticking. Sandbox mode: unlimited chill shifts. Serve customers, match films, build your rep as the greatest clerk alive.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="deep-visual">
+        <div class="stat-card">
+          <span class="stat-num">63</span>
+          <div class="stat-label">Movie Mashup genres</div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-card">
+            <span class="stat-num">130+</span>
+            <div class="stat-label">Mashup locations</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">4</span>
+            <div class="stat-label">Trivia game modes</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">51</span>
+          <div class="stat-label">CineQuests across sprint, journey & challenge tiers</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FREEMIUM / DIRECTOR'S CUT -->
+  <section class="freemium-section">
+    <div class="freemium-inner">
+      <div class="section-label">Director's Cut</div>
+      <h2 class="section-title">Free to explore.<br>One purchase to own it all.</h2>
+      <p class="section-body" style="margin-top: 12px;">MovieHabit is free to download with daily access to every feature. The Director's Cut is a one-time purchase that removes all limits — forever.</p>
+
+      <div class="freemium-grid">
+        <div class="plan-card">
+          <h3>Free</h3>
+          <span class="plan-price">$0</span>
+          <p>Full access to every feature with daily limits. Everything resets at midnight.</p>
+          <ul class="plan-features">
+            <li class="limited">2 Movie Mashup generations/day</li>
+            <li class="limited">5 Movie Sensei questions/day</li>
+            <li class="limited">2 Trivia games/day</li>
+            <li class="limited">2 Cast Call games/day</li>
+            <li class="limited">2 Midnight Video sessions/day</li>
+            <li class="limited">3 Filmweb expansions/day</li>
+            <li class="limited">3 free CineQuests</li>
+            <li class="limited">Today's Film Almanac only</li>
+            <li class="limited">3 Vault entries (owned films)</li>
+            <li>Full Filmweb graph</li>
+            <li>Full film rating & tracking</li>
+            <li>Desert Island list (no Gold Card)</li>
+          </ul>
+        </div>
+        <div class="plan-card premium">
+          <h3>Director's Cut</h3>
+          <span class="plan-price">$7.99</span>
+          <p>One-time purchase. No subscription. No renewals. Unlocks everything permanently.</p>
+          <ul class="plan-features">
+            <li>Unlimited Movie Mashup</li>
+            <li>Unlimited Movie Sensei</li>
+            <li>Unlimited Trivia & Cast Call</li>
+            <li>Unlimited Midnight Video (+ Sandbox)</li>
+            <li>Unlimited Filmweb expansions</li>
+            <li>All 51 CineQuests unlocked</li>
+            <li>Full Film Almanac — every day in history</li>
+            <li>Unlimited Vault (owned, subs, cinema)</li>
+            <li>Full Film DNA profile</li>
+            <li>Desert Island Gold Card + AI analysis</li>
+            <li>My Picks store customization</li>
+            <li>Family Sharing supported</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="callout-section">
+    <div class="callout-inner">
+      <span class="section-label">Built Different</span>
+      <div class="callout-quote">
+        MovieHabit is not a streaming guide — it's a cinephile universe that lives on your device and respects your obsession.
+      </div>
+      <p class="callout-sub">
+        No account. No ads. No cloud. No social pressure. Just a private sanctuary for people who take film seriously — powered by on-device AI, built by one developer who believes cinema deserves better software.
+      </p>
+    </div>
+  </section>
+
+  <section class="mission">
+    <div class="mission-content">
+      <h2>Built for the obsessed.</h2>
+      <p>
+        Most movie apps are built for casual scrollers. MovieHabit was built for people who care — who have opinions about cinematography, who can name the DP on a 1970s Italian horror film, who argue about the correct order to watch a director's filmography.
+      </p>
+      <p>
+        The app is fully offline and privacy-first by design. No account is required. No personal data is sold. No third-party tracking. Your watch history, your ratings, your taste profile — all of it stays on your device.
+      </p>
+
+      <div class="developer-note">
+        <h3>Why MovieHabit Exists</h3>
+        <p>
+          MovieHabit was built because no app existed that treated cinephiles like adults. Every major movie app is either a streaming aggregator, a social network, or a glorified spreadsheet. None of them felt like they were built by someone who actually loves film.
+        </p>
+        <p>
+          This app started from a simple question: what would the perfect tool look like for someone who is genuinely obsessed with cinema? The answer is a universe — rating, tracking, exploring connections, playing games, chatting with an AI that knows its stuff, and building a personal archive that reflects who you are as a viewer.
+        </p>
+        <p>
+          It runs on Apple Foundation Models, stores everything locally, and will never require an account or sell your data. Because a great cinephile app should respect the person using it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 CommonLogix LLC. All rights reserved.</p>
+    <p style="margin-top: 10px;">
+      <a href="index.html">CommonLogix</a> •
+      <a href="support.html">Support</a> •
+      <a href="privacy.html">Privacy Policy</a> •
+      <a href="terms.html">Terms of Use</a>
+    </p>
+  </footer>
+
+</body>
+</html>
